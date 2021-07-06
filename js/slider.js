@@ -11,7 +11,7 @@ import anime from "animejs/lib/anime.es.js";
 // configure Swiper to use modules
 Swiper.use([Navigation, Pagination, Autoplay, Parallax, EffectFade]);
 
-const speed = 50000;
+const speed = 5000;
 
 const swiper = new Swiper(".hero-slider", {
   loop: true,
