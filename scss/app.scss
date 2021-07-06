@@ -1,0 +1,12 @@
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/aos/dist/aos.css";
+
+@import "./mixins.scss";
+
+// global stuff
+@import "./parts/globals.scss";
+@import "./parts/colors.scss";
+@import "./parts/typo.scss";
+// sections
+@import "./parts/header.scss";
+@import "./parts/slider.scss";

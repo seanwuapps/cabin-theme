@@ -1,0 +1,120 @@
+header {
+  --menu-trigger-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  .burger {
+    overflow: hidden;
+    width: var(--menu-trigger-size);
+    height: var(--menu-trigger-size);
+    border: 1px solid transparent;
+    background: $primary;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    .bar {
+      display: block;
+      width: 2rem;
+      height: 2px;
+      border-radius: 2px;
+      transition: all 0.25s ease-in-out;
+      &:not(.double) {
+        background: white;
+      }
+      > span {
+        display: block;
+        width: 2rem;
+        height: 2px;
+        border-radius: 2px;
+        background: white;
+        transition: all 0.25s ease-in-out;
+        transform-origin: center;
+        &:nth-child(1) {
+          transform: translateY(0px);
+        }
+        &:nth-child(2) {
+          transform: translateY(-2px);
+        }
+      }
+    }
+    &.open {
+      background: transparent;
+      border-color: white;
+      .bar {
+        &:nth-child(1) {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+
+        &:nth-child(2) {
+          > span {
+            &:nth-child(1) {
+              transform: translateY(0px) rotate(45deg);
+              // transform: translateY(1px);
+            }
+            &:nth-child(2) {
+              transform: translateY(-2px) rotate(-45deg);
+              // transform: translateY(-1px);
+            }
+          }
+        }
+        &:nth-child(3) {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .spacer {
+    width: var(--menu-trigger-size);
+  }
+  .logo {
+    position: relative;
+    z-index: 9;
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  .nav-overlay {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    background: black;
+    color: white;
+    @include transition(transform);
+    padding-top: 16rem;
+    &.open {
+      transform: translateY(100%);
+    }
+  }
+
+  .main-nav {
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      li {
+        margin: 2rem 0;
+        text-align: left;
+        a {
+          color: white;
+          font-family: $lora;
+          font-size: 2em;
+        }
+      }
+    }
+  }
+}

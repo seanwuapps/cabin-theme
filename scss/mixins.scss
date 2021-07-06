@@ -1,0 +1,13 @@
+@mixin center($selector) {
+  position: relative;
+  #{$selrctor} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin transition($prop) {
+  transition: #{$prop} 0.4s ease-in-out;
+}
