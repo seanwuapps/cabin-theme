@@ -27,6 +27,24 @@
     opacity: 0.8;
   }
 
+  .hero-slide-content {
+    position: absolute;
+    inset: 0;
+    z-index: 9;
+    padding: 0 20vw;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
   .swiper-pagination-bullet {
     &.swiper-pagination-bullet-active {
       --swiper-pagination-color: #{$primary};

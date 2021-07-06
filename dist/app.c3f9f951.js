@@ -14656,19 +14656,17 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 // configure Swiper to use modules
 _swiper.default.use([_swiper.Navigation, _swiper.Pagination, _swiper.Autoplay, _swiper.Parallax, _swiper.EffectFade]);
 
-var speed = 5000;
+var speed = 50000;
 var swiper = new _swiper.default(".hero-slider", {
-  // speed: 400,
-  // spaceBetween: 100,
   loop: true,
   pagination: {
     el: ".swiper-pagination",
     type: "bullets"
   },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
   autoplay: {
     delay: speed
   },
@@ -15120,10 +15118,11 @@ var openMenu = function openMenu() {
     targets: [".header-bar", ".main-nav li"],
     opacity: [0, 1],
     translateY: [20, 0],
-    delay: _animeEs.default.stagger(100, {
+    delay: _animeEs.default.stagger(150, {
       start: 400
-    }) // increase delay by 100ms for each elements.
-
+    }),
+    // increase delay by 100ms for each elements.
+    easing: "easeInOutCubic"
   });
   (0, _animeEs.default)({
     targets: ".nav-overlay",
@@ -15209,7 +15208,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1028" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

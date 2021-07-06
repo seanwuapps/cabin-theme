@@ -10,7 +10,8 @@ const openMenu = () => {
     targets: [".header-bar", ".main-nav li"],
     opacity: [0, 1],
     translateY: [20, 0],
-    delay: anime.stagger(100, { start: 400 }), // increase delay by 100ms for each elements.
+    delay: anime.stagger(150, { start: 400 }), // increase delay by 100ms for each elements.
+    easing: "easeInOutCubic",
   });
 
   anime({
