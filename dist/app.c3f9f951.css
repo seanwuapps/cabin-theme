@@ -10748,6 +10748,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+:root {
+  --menu-trigger-size: 3rem;
+  --nav-overlay-bg-color: #212529;
+  --header-padding: 2rem;
+  --logo-size: 5rem;
+}
+
 html,
 body {
   scroll-behavior: smooth;
@@ -10794,12 +10801,10 @@ a:hover, a:focus-visible {
 }
 
 header {
-  --menu-trigger-size: 3rem;
-  --nav-overlay-bg-color: #3a3636;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--header-padding);
 }
 header .burger {
   overflow: hidden;
@@ -10820,8 +10825,9 @@ header .burger {
   transition: all 0.25s ease-in-out;
 }
 header .burger .bar {
+  --menu-bar-width: 1.4rem;
   display: block;
-  width: 2rem;
+  width: var(--menu-bar-width);
   height: 2px;
   border-radius: 2px;
   transition: all 0.25s ease-in-out;
@@ -10831,7 +10837,7 @@ header .burger .bar:not(.double) {
 }
 header .burger .bar > span {
   display: block;
-  width: 2rem;
+  width: var(--menu-bar-width);
   height: 2px;
   border-radius: 2px;
   background: white;
@@ -10870,14 +10876,15 @@ header .logo {
   z-index: 9;
 }
 header .logo img {
-  width: 5rem;
-  height: 5rem;
+  width: var(--logo-size);
+  height: var(--logo-size);
 }
 header .nav-overlay {
   position: absolute;
   bottom: 100%;
   left: 0;
   right: 0;
+  z-index: 7;
   min-height: 100vh;
   background: var(--nav-overlay-bg-color);
   color: white;
@@ -10887,10 +10894,14 @@ header .nav-overlay {
 header .main-nav ul {
   padding: 0;
   margin: 0;
+  margin-top: 2rem;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 header .main-nav ul li {
-  margin: 2rem 0;
+  margin: 0;
   text-align: left;
 }
 header .main-nav ul li a {
@@ -10907,27 +10918,108 @@ header .header-bar {
   z-index: 9;
   top: 14rem;
   left: 2rem;
+  opacity: 0;
 }
-header .header-bar .links {
+@media (min-width: 992px) {
+  header .header-bar {
+    display: none;
+  }
+}
+header .header-bar-links {
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
-header .header-bar .links a {
+header .header-bar-links a {
+  display: inline-flex;
+  place-items: center;
   text-transform: uppercase;
   color: white;
   letter-spacing: 1px;
   font-size: 14px;
 }
-@media (min-width: 576px) {
-  header .header-bar {
-    padding: 1rem;
+header .header-bar-desktop {
+  display: none;
+}
+@media (min-width: 992px) {
+  header .header-bar-desktop {
+    display: flex;
+    position: fixed;
+    height: var(--menu-trigger-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 2rem;
+    right: calc(var(--menu-trigger-size) + 2rem);
+    padding: 1rem 2rem;
+    z-index: 9;
+    overflow: hidden;
   }
+  header .header-bar-desktop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: translateY(0);
+    transition: transform 0.4s ease-in-out;
+  }
+  header .header-bar-desktop .header-bar-links {
+    gap: 1rem;
+  }
+  header .header-bar-desktop .header-bar-links a {
+    color: black;
+    letter-spacing: 0;
+  }
+}
+header.open .header-bar-desktop::before {
+  transform: translateY(100%);
+}
+header.open .header-bar-desktop .header-bar-links a {
+  color: white;
+}
+
+.hero-slider-section {
+  background: black;
+  margin-top: calc(-1 * (var(--logo-size) + var(--header-padding) * 2));
 }
 
 .hero-slider {
   width: 100vw;
   height: 100vh;
   text-align: center;
+}
+.hero-slider .swiper-slide::before {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, transparent 10%, #000);
+}
+.hero-slider .hero-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.hero-slider .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  --swiper-pagination-color: #f7382d;
+}
+.hero-slider .hero-slider-timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background: #f7382d;
+  width: 100%;
+  height: 4px;
+  z-index: 6;
+  transform-origin: left;
 }
 /**
  * Swiper 6.7.5

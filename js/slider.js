@@ -1,8 +1,17 @@
-import Swiper, { Navigation, Pagination, Autoplay, Parallax } from "swiper";
+import Swiper, {
+  Navigation,
+  Pagination,
+  Autoplay,
+  Parallax,
+  EffectFade,
+} from "swiper";
 import "swiper/swiper-bundle.min.css";
+import anime from "animejs/lib/anime.es.js";
 
 // configure Swiper to use modules
-Swiper.use([Navigation, Pagination, Autoplay, Parallax]);
+Swiper.use([Navigation, Pagination, Autoplay, Parallax, EffectFade]);
+
+const speed = 5000;
 
 const swiper = new Swiper(".hero-slider", {
   // speed: 400,
@@ -17,7 +26,18 @@ const swiper = new Swiper(".hero-slider", {
     prevEl: ".swiper-button-prev",
   },
   autoplay: {
-    delay: 5000,
+    delay: speed,
+  },
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true,
   },
 });
-console.log(swiper.autoplay);
+swiper.on("slideChange", () => {
+  anime({
+    targets: ".hero-slider-timer",
+    scaleX: [0, 1],
+    easing: "linear",
+    duration: speed,
+  });
+});

@@ -1,5 +1,4 @@
 import anime from "animejs/lib/anime.es.js";
-
 const menuTrigger = document.querySelector(".menu-trigger");
 const header = document.querySelector("header");
 
@@ -11,7 +10,7 @@ const openMenu = () => {
     targets: [".header-bar", ".main-nav li"],
     opacity: [0, 1],
     translateY: [20, 0],
-    delay: anime.stagger(100, { start: 500 }), // increase delay by 100ms for each elements.
+    delay: anime.stagger(100, { start: 400 }), // increase delay by 100ms for each elements.
   });
 
   anime({
@@ -28,15 +27,16 @@ const closeMenu = () => {
   anime({
     targets: [".main-nav li", ".header-bar"],
     opacity: 0,
-    translateY: 20,
+    translateY: -20,
     duration: 400,
+    easing: "easeInOutCubic",
   });
 
   anime({
     targets: ".nav-overlay",
     translateY: "0",
     easing: "easeInOutCubic",
-    delay: 400,
+    delay: 200,
     duration: 400,
   });
 };

@@ -13,7 +13,12 @@
 }
 
 @mixin tablet {
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
+    @content;
+  }
+}
+@mixin desktop {
+  @include media-breakpoint-up(lg) {
     @content;
   }
 }
