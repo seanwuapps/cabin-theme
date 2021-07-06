@@ -11,3 +11,9 @@
 @mixin transition($prop) {
   transition: #{$prop} 0.4s ease-in-out;
 }
+
+@mixin tablet {
+  @include media-breakpoint-up(sm) {
+    @content;
+  }
+}

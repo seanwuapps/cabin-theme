@@ -14687,13 +14687,13 @@ var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var menuTrigger = document.querySelector(".menu-trigger");
-var navOverlay = document.querySelector(".nav-overlay");
+var header = document.querySelector("header");
 
 var openMenu = function openMenu() {
   menuTrigger.classList.add("open");
-  navOverlay.classList.add("open");
+  header.classList.add("open");
   (0, _animeEs.default)({
-    targets: ".main-nav li",
+    targets: [".header-bar", ".main-nav li"],
     opacity: [0, 1],
     translateY: [20, 0],
     delay: _animeEs.default.stagger(100, {
@@ -14701,15 +14701,29 @@ var openMenu = function openMenu() {
     }) // increase delay by 100ms for each elements.
 
   });
+  (0, _animeEs.default)({
+    targets: ".nav-overlay",
+    translateY: "100%",
+    easing: "easeInOutCubic",
+    duration: 400
+  });
 };
 
 var closeMenu = function closeMenu() {
   menuTrigger.classList.remove("open");
-  navOverlay.classList.remove("open");
+  header.classList.remove("open");
   (0, _animeEs.default)({
-    targets: ".main-nav li",
+    targets: [".main-nav li", ".header-bar"],
     opacity: 0,
-    translateY: 20
+    translateY: 20,
+    duration: 400
+  });
+  (0, _animeEs.default)({
+    targets: ".nav-overlay",
+    translateY: "0",
+    easing: "easeInOutCubic",
+    delay: 400,
+    duration: 400
   });
 };
 
@@ -14766,7 +14780,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33618" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1034" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

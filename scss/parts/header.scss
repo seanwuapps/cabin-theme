@@ -1,9 +1,11 @@
 header {
-  --menu-trigger-size: 4rem;
+  --menu-trigger-size: 3rem;
+  --nav-overlay-bg-color: #{$dark};
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+
   .burger {
     overflow: hidden;
     width: var(--menu-trigger-size);
@@ -92,13 +94,10 @@ header {
     left: 0;
     right: 0;
     min-height: 100vh;
-    background: black;
+    background: var(--nav-overlay-bg-color);
     color: white;
-    @include transition(transform);
-    padding-top: 16rem;
-    &.open {
-      transform: translateY(100%);
-    }
+    padding: 2rem;
+    padding-top: 18rem;
   }
 
   .main-nav {
@@ -115,6 +114,32 @@ header {
           font-size: 2em;
         }
       }
+    }
+  }
+
+  .header-bar {
+    position: fixed;
+    // top: 2rem;
+    // right: calc(var(--menu-trigger-size) + 2rem);
+    height: var(--menu-trigger-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    top: 14rem;
+    left: 2rem;
+    .links {
+      display: flex;
+      gap: 2rem;
+      a {
+        text-transform: uppercase;
+        color: white;
+        letter-spacing: 1px;
+        font-size: 14px;
+      }
+    }
+    @include tablet {
+      padding: 1rem;
     }
   }
 }

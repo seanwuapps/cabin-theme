@@ -3,3 +3,9 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+::-webkit-scrollbar {
+  display: none !important;
+  color: #fff !important;
+  height: 0 !important;
+  width: 0 !important;
+}
