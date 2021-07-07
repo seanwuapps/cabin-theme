@@ -67,6 +67,32 @@
   .scroll-indicator {
     position: absolute;
     right: 2rem;
-    bottom: 0;
+    bottom: 1rem;
+    z-index: 6;
+    background: white;
+    width: 2px;
+    height: 4rem;
+    overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 6;
+      background: $primary;
+      width: 2px;
+      height: 4rem;
+      transform-origin: top;
+      animation: scroll-indicator 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
   }
 }

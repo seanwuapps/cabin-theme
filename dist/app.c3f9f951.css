@@ -11240,7 +11240,43 @@ header .header-bar-desktop {
 .hero-slider-section .scroll-indicator {
   position: absolute;
   right: 2rem;
+  bottom: 1rem;
+  z-index: 6;
+  background: white;
+  width: 0.125rem;
+  height: 4rem;
+  overflow: hidden;
+}
+.hero-slider-section .scroll-indicator::after {
+  content: "";
+  position: absolute;
+  right: 0;
   bottom: 0;
+  z-index: 6;
+  background: #f7382d;
+  width: 0.125rem;
+  height: 4rem;
+  transform-origin: top;
+  -webkit-animation: scroll-indicator 3s ease-in-out infinite;
+          animation: scroll-indicator 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes scroll-indicator {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 /**
  * Swiper 6.7.5
