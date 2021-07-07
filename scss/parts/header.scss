@@ -1,4 +1,5 @@
 header {
+  --header-bar-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +24,6 @@ header {
     gap: 0.3rem;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
-
     .bar {
       --menu-bar-width: 1.4rem;
       display: block;
@@ -90,18 +90,18 @@ header {
     }
   }
   .nav-overlay {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
     z-index: 7;
     min-height: 100vh;
     background-color: var(--nav-overlay-bg-color);
     color: white;
     padding: 2rem;
-    padding-top: 15rem;
+    padding-top: 10rem;
+    transform: translateY(-100%);
     &::before {
-      position: absolute;
+      position: fixed;
       inset: 0;
       content: "";
       background-image: url(https://images.unsplash.com/photo-1568659585069-facb248c4935?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
@@ -200,37 +200,50 @@ header {
       justify-content: center;
       top: 2rem;
       right: calc(var(--menu-trigger-size) + 2rem);
-      padding: 1rem 2rem;
-      z-index: 9;
+      padding: 1rem 1.2rem;
+      z-index: 8;
       overflow: hidden;
+
       &::before {
         content: "";
         position: absolute;
         inset: 0;
         background: white;
-        transform: translateY(0);
+        transform: translateY(-100%);
         @include transition(transform);
+      }
+      &.hasBg {
+        box-shadow: var(--header-bar-shadow);
+        .header-bar-links {
+          a {
+            color: black;
+          }
+        }
+        &::before {
+          @include transition(transform);
+          transform: translateY(0);
+        }
       }
       .header-bar-links {
         gap: 1rem;
         a {
-          color: black;
+          @include transition(color);
           letter-spacing: 0;
         }
       }
     }
   }
 
-  &.open {
-    .header-bar-desktop {
-      &::before {
-        transform: translateY(100%);
-      }
-      .header-bar-links {
-        a {
-          color: white;
-        }
-      }
-    }
-  }
+  // &.open {
+  //   .header-bar-desktop {
+  //     &::before {
+  //       transform: translateY(100%);
+  //     }
+  //     .header-bar-links {
+  //       a {
+  //         color: white;
+  //       }
+  //     }
+  //   }
+  // }
 }

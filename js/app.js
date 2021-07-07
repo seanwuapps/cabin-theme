@@ -6,3 +6,4 @@ import "./animation";
 import "./slider";
 import "./parallax";
 import "./menu";
+import "./scroll";

@@ -11,10 +11,11 @@ import anime from "animejs/lib/anime.es.js";
 // configure Swiper to use modules
 Swiper.use([Navigation, Pagination, Autoplay, Parallax, EffectFade]);
 
-const speed = 5000;
+const speed = 8000;
 
 const swiper = new Swiper(".hero-slider", {
   loop: true,
+  // allowTouchMove: false,
   pagination: {
     el: ".swiper-pagination",
     type: "bullets",
@@ -30,6 +31,13 @@ const swiper = new Swiper(".hero-slider", {
   fadeEffect: {
     crossFade: true,
   },
+  parallax: true,
+});
+anime({
+  targets: ".hero-slider-timer",
+  scaleX: [0, 1],
+  easing: "linear",
+  duration: speed,
 });
 swiper.on("slideChange", () => {
   anime({

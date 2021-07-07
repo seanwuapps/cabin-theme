@@ -9,6 +9,7 @@
 }
 
 @mixin transition($prop) {
+  will-change: #{$prop};
   transition: #{$prop} 0.4s ease-in-out;
 }
 

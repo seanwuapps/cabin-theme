@@ -5,7 +5,7 @@ const header = document.querySelector("header");
 const openMenu = () => {
   menuTrigger.classList.add("open");
   header.classList.add("open");
-
+  document.documentElement.style.overflowY = "hidden";
   anime({
     targets: [".header-bar", ".main-nav li"],
     opacity: [0, 1],
@@ -16,7 +16,7 @@ const openMenu = () => {
 
   anime({
     targets: ".nav-overlay",
-    translateY: "100%",
+    translateY: ["-100%", 0],
     easing: "easeInOutCubic",
     duration: 400,
   });
@@ -25,6 +25,7 @@ const openMenu = () => {
 const closeMenu = () => {
   menuTrigger.classList.remove("open");
   header.classList.remove("open");
+  document.documentElement.style.overflowY = "auto";
   anime({
     targets: [".main-nav li", ".header-bar"],
     opacity: 0,
@@ -35,7 +36,7 @@ const closeMenu = () => {
 
   anime({
     targets: ".nav-overlay",
-    translateY: "0",
+    translateY: [0, "-100%"],
     easing: "easeInOutCubic",
     delay: 200,
     duration: 400,
