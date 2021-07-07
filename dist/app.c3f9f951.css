@@ -10888,6 +10888,10 @@ body {
   overflow-x: hidden;
 }
 
+body {
+  overflow: visible;
+}
+
 html {
   font-size: 1rem;
 }
@@ -10904,6 +10908,20 @@ html {
 }
 section.xl {
   padding: 10rem 8rem;
+}
+
+section.feature {
+  margin: 5rem 0;
+  height: 50vh;
+  overflow: hidden;
+}
+section.feature .featured-parallax {
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 body {

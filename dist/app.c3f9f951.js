@@ -15200,6 +15200,7 @@ var _rellax = _interopRequireDefault(require("rellax"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 new _rellax.default(".hero-slide-img");
+new _rellax.default(".featured-parallax");
 },{"rellax":"node_modules/rellax/rellax.js"}],"js/menu.js":[function(require,module,exports) {
 "use strict";
 
