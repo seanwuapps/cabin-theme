@@ -1,8 +1,5 @@
 import debounce from "lodash.debounce";
-// import Scrollbar from "smooth-scrollbar";
-// Scrollbar.init(document.querySelector("#scroll-body"), {
-//   damping: 0.06,
-// });
+
 const headerbar = document.querySelector(".header-bar-desktop");
 window.addEventListener(
   "scroll",

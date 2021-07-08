@@ -15220,7 +15220,7 @@ var openMenu = function openMenu() {
     opacity: [0, 1],
     translateY: [20, 0],
     delay: _animeEs.default.stagger(150, {
-      start: 400
+      start: 200
     }),
     // increase delay by 100ms for each elements.
     easing: "easeInOutCubic"
@@ -15273,10 +15273,6 @@ var _lodash = _interopRequireDefault(require("lodash.debounce"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Scrollbar from "smooth-scrollbar";
-// Scrollbar.init(document.querySelector("#scroll-body"), {
-//   damping: 0.06,
-// });
 var headerbar = document.querySelector(".header-bar-desktop");
 window.addEventListener("scroll", (0, _lodash.default)(function () {
   if (window.scrollY > 100) {
@@ -15331,7 +15327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1211" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

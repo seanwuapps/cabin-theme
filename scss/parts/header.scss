@@ -96,19 +96,18 @@ header {
     z-index: 7;
     min-height: 100vh;
     background-color: var(--nav-overlay-bg-color);
+    background-image: url(https://images.unsplash.com/photo-1568659585069-facb248c4935?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 80%;
     color: white;
-    padding: 2rem;
-    padding-top: 10rem;
     transform: translateY(-100%);
-    &::before {
-      position: fixed;
-      inset: 0;
-      content: "";
-      background-image: url(https://images.unsplash.com/photo-1568659585069-facb248c4935?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 80%;
-      opacity: 0.15;
+    .nav-container {
+      padding: 2rem;
+      padding-top: 10rem;
+      width: 100%;
+      height: auto;
+      background-color: rgba($dark, 0.8);
     }
   }
 
