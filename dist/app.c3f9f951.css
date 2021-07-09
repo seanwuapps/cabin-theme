@@ -11363,7 +11363,7 @@ header .header-bar-desktop {
   }
 }
 .gallery-slider-container {
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 .gallery-slider-container .gallery-slider {
   position: relative;
@@ -11373,10 +11373,9 @@ header .header-bar-desktop {
   padding-bottom: 4rem;
 }
 .gallery-slider-container .swiper-slide {
-  will-change: all;
-  transition: all 0.4s ease-in-out;
   position: relative;
   aspect-ratio: 4/3;
+  transition: all 0.15s ease-in-out 300ms;
 }
 .gallery-slider-container .swiper-slide img {
   position: absolute;
@@ -11400,14 +11399,14 @@ header .header-bar-desktop {
 }
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-active {
-    width: 50vw !important;
+    width: 60vw !important;
     margin-right: 6vw;
     margin-left: 4vw;
   }
 }
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-next {
-    width: 40vw !important;
+    width: 30vw !important;
   }
 }
 .gallery-slider-container .swiper-button-prev,

@@ -115,6 +115,7 @@ gallerySliders.forEach((slider) => {
       nextEl,
       prevEl,
     },
+    effect: "coverflow",
     breakpoints: {
       768: {
         slidesPerView: 2,

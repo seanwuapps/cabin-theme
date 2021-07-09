@@ -98,7 +98,7 @@
 }
 
 .gallery-slider-container {
-  margin-top: 8rem;
+  margin-top: 6rem;
   .gallery-slider {
     position: relative;
   }
@@ -107,9 +107,9 @@
     padding-bottom: 4rem;
   }
   .swiper-slide {
-    @include transition(all);
     position: relative;
     aspect-ratio: 4/3;
+    transition: all 0.15s ease-in-out 300ms;
     img {
       position: absolute;
       inset: 0;
@@ -129,14 +129,14 @@
     &.swiper-slide-active {
       width: 100%;
       @include tablet {
-        width: 50vw !important;
+        width: 60vw !important;
         margin-right: 6vw;
         margin-left: 4vw;
       }
     }
     &.swiper-slide-next {
       @include tablet {
-        width: 40vw !important;
+        width: 30vw !important;
       }
     }
   }
