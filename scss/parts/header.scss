@@ -94,7 +94,7 @@ header {
     inset: 0;
     overflow-y: auto;
     z-index: 7;
-    min-height: 100vh;
+    // min-height: 100vh;
     background-color: var(--nav-overlay-bg-color);
     background-image: url(https://images.unsplash.com/photo-1568659585069-facb248c4935?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
     background-repeat: no-repeat;
@@ -103,6 +103,7 @@ header {
     color: white;
     transform: translateY(-100%);
     .nav-container {
+      min-height: 100vh;
       padding: 2rem;
       padding-top: 10rem;
       width: 100%;
@@ -208,8 +209,8 @@ header {
         position: absolute;
         inset: 0;
         background: white;
-        transform: translateY(-100%);
-        @include transition(transform);
+        transform: translateY(-120%);
+        @include transition(all);
       }
       &.hasBg {
         box-shadow: var(--header-bar-shadow);

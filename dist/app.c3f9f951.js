@@ -14647,12 +14647,17 @@ require("swiper/swiper-bundle.min.css");
 
 var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
+var _lodash = _interopRequireDefault(require("lodash.debounce"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+/*************************************************************
+ * Hero slider
+ *************************************************************/
 // configure Swiper to use modules
 _swiper.default.use([_swiper.Navigation, _swiper.Pagination, _swiper.Autoplay, _swiper.Parallax, _swiper.EffectFade]);
 
@@ -14674,8 +14679,7 @@ var swiper = new _swiper.default(".hero-slider", {
   effect: "fade",
   fadeEffect: {
     crossFade: true
-  },
-  parallax: true
+  }
 });
 (0, _animeEs.default)({
   targets: ".hero-slider-timer",
@@ -14691,7 +14695,80 @@ swiper.on("slideChange", function () {
     duration: speed
   });
 });
-},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js"}],"node_modules/rellax/rellax.js":[function(require,module,exports) {
+/*************************************************************
+ * Gallery slider
+ *************************************************************/
+
+var cursor = document.querySelector(".custom-cursor");
+
+var moveNextCursor = function moveNextCursor(e) {
+  (0, _animeEs.default)({
+    targets: cursor,
+    opacity: 1,
+    translateX: e.clientX,
+    translateY: e.clientY,
+    rotate: 180,
+    easing: "easeOutCubic",
+    duration: 50
+  });
+};
+
+var movePrevCursor = function movePrevCursor(e) {
+  (0, _animeEs.default)({
+    targets: cursor,
+    opacity: 1,
+    translateX: e.clientX,
+    translateY: e.clientY,
+    rotate: 0,
+    easing: "easeOutCubic",
+    duration: 50
+  });
+};
+
+var hideCursor = function hideCursor() {
+  (0, _animeEs.default)({
+    targets: cursor,
+    opacity: 0,
+    duration: 100
+  });
+};
+
+var pressCursor = function pressCursor() {
+  (0, _animeEs.default)({
+    targets: cursor,
+    scale: [0.9, 1],
+    duration: 300
+  });
+};
+
+var initNavCursor = function initNavCursor(prevEl, nextEl) {
+  nextEl.addEventListener("mousemove", moveNextCursor);
+  prevEl.addEventListener("mousemove", movePrevCursor);
+  nextEl.addEventListener("mouseleave", hideCursor);
+  prevEl.addEventListener("mouseleave", hideCursor);
+  nextEl.addEventListener("click", pressCursor);
+  prevEl.addEventListener("click", pressCursor);
+};
+
+var gallerySliders = document.querySelectorAll(".gallery-slider");
+gallerySliders.forEach(function (slider) {
+  var prevEl = slider.querySelector(".swiper-button-prev");
+  var nextEl = slider.querySelector(".swiper-button-next");
+  initNavCursor(prevEl, nextEl);
+  var gallery = new _swiper.default(slider, {
+    pagination: {
+      el: slider.querySelector(".swiper-pagination"),
+      type: "fraction"
+    },
+    slidesPerView: 2,
+    slidesPerGroupSkip: 1,
+    navigation: {
+      nextEl: nextEl,
+      prevEl: prevEl
+    }
+  });
+});
+},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js","lodash.debounce":"node_modules/lodash.debounce/index.js"}],"node_modules/rellax/rellax.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 
@@ -15327,7 +15404,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1029" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "20415" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

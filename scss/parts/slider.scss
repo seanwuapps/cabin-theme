@@ -71,7 +71,7 @@
     z-index: 6;
     background: white;
     width: 1px;
-    height: 3rem;
+    height: 4rem;
     overflow: hidden;
     &::after {
       content: "";
@@ -81,7 +81,7 @@
       z-index: 6;
       background: $primary;
       width: 1px;
-      height: 3rem;
+      height: 4rem;
       transform-origin: top;
       animation: scroll-indicator 3s ease-in-out infinite;
     }
@@ -94,5 +94,73 @@
   }
   100% {
     transform: translateY(100%);
+  }
+}
+
+.gallery-slider-container {
+  margin-top: 8rem;
+  .gallery-slider {
+    position: relative;
+  }
+  .swiper-wrapper {
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+  .swiper-slide {
+    @include transition(all);
+    position: relative;
+    aspect-ratio: 4/3;
+    img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      transform-origin: top left;
+      max-width: 100%;
+      width: 100%;
+      z-index: -1;
+    }
+    h3 {
+      position: absolute;
+      bottom: 2vw;
+      left: 2vw;
+      color: white;
+      font-size: 2rem;
+    }
+    &.swiper-slide-active {
+      width: 50vw !important;
+      margin-right: 6vw;
+      margin-left: 4vw;
+    }
+    &.swiper-slide-next {
+      width: 40vw !important;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44%;
+    height: 100%;
+    top: 0;
+    cursor: none;
+    &::after {
+      content: none;
+    }
+  }
+  .swiper-button-prev {
+    width: 55%;
+  }
+  .swiper-pagination {
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    .swiper-pagination-current {
+      font-family: $lora;
+      padding-left: 3vw;
+      font-size: 2em;
+      padding-right: 4px;
+    }
+    .swiper-pagination-total {
+      padding: 4px;
+    }
   }
 }
