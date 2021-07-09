@@ -127,12 +127,17 @@
       font-size: 2rem;
     }
     &.swiper-slide-active {
-      width: 50vw !important;
-      margin-right: 6vw;
-      margin-left: 4vw;
+      width: 100%;
+      @include tablet {
+        width: 50vw !important;
+        margin-right: 6vw;
+        margin-left: 4vw;
+      }
     }
     &.swiper-slide-next {
-      width: 40vw !important;
+      @include tablet {
+        width: 40vw !important;
+      }
     }
   }
   .swiper-button-prev,

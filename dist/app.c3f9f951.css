@@ -11024,6 +11024,7 @@ section.feature .featured-parallax {
   inset: 0;
   transform: rotate(-45deg);
   background: white;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
 }
 
 header {
@@ -11395,12 +11396,19 @@ header .header-bar-desktop {
   font-size: 2rem;
 }
 .gallery-slider-container .swiper-slide.swiper-slide-active {
-  width: 50vw !important;
-  margin-right: 6vw;
-  margin-left: 4vw;
+  width: 100%;
 }
-.gallery-slider-container .swiper-slide.swiper-slide-next {
-  width: 40vw !important;
+@media (min-width: 768px) {
+  .gallery-slider-container .swiper-slide.swiper-slide-active {
+    width: 50vw !important;
+    margin-right: 6vw;
+    margin-left: 4vw;
+  }
+}
+@media (min-width: 768px) {
+  .gallery-slider-container .swiper-slide.swiper-slide-next {
+    width: 40vw !important;
+  }
 }
 .gallery-slider-container .swiper-button-prev,
 .gallery-slider-container .swiper-button-next {

@@ -14760,11 +14760,15 @@ gallerySliders.forEach(function (slider) {
       el: slider.querySelector(".swiper-pagination"),
       type: "fraction"
     },
-    slidesPerView: 2,
-    slidesPerGroupSkip: 1,
     navigation: {
       nextEl: nextEl,
       prevEl: prevEl
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        slidesPerGroupSkip: 1
+      }
     }
   });
 });
