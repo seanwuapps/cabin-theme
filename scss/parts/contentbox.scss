@@ -1,0 +1,37 @@
+.contentbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  img {
+    flex: 1;
+    aspect-ratio: 1/1.2;
+    object-fit: cover;
+    @include desktop {
+      max-width: 70%;
+      min-width: 70%;
+    }
+  }
+  .text {
+    position: absolute;
+    padding: 2rem;
+    max-height: 100%;
+    height: auto;
+    background: white;
+    box-shadow: var(--shadow-big);
+    width: 80%;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    @include desktop {
+      padding: 3rem;
+      left: 50%;
+      width: 40%;
+    }
+    h4 {
+      padding-bottom: 1rem;
+    }
+    .text-content {
+    }
+  }
+}

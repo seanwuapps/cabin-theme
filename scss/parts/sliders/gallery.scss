@@ -1,0 +1,88 @@
+.gallery-slider-container {
+  margin-top: 6rem;
+  .gallery-slider {
+    position: relative;
+  }
+  .swiper-wrapper {
+    align-items: center;
+    padding-bottom: 4rem;
+  }
+  .swiper-slide {
+    position: relative;
+    aspect-ratio: 1;
+    img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      transform-origin: top left;
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    h3 {
+      position: absolute;
+      bottom: 2vw;
+      left: 2vw;
+      color: white;
+      font-size: 2rem;
+      z-index: 2;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+      inset: 0;
+    }
+    &.swiper-slide-active {
+      width: 100%;
+      @include tablet {
+        width: 60% !important;
+        margin-right: 6%;
+        margin-left: 4%;
+      }
+    }
+    &.swiper-slide-next {
+      @include tablet {
+        aspect-ratio: 3/4;
+        width: 30% !important;
+      }
+    }
+  }
+}
+
+.cabin-slider {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44%;
+    height: 100%;
+    top: 0;
+    cursor: none;
+    &::after {
+      content: none;
+    }
+  }
+
+  .swiper-button-prev {
+    width: 55%;
+  }
+  .swiper-pagination {
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    .swiper-pagination-current {
+      font-family: $lora;
+      padding-left: 4%;
+      font-size: 2em;
+      padding-right: 4px;
+    }
+    .swiper-pagination-total {
+      padding: 4px;
+    }
+  }
+}

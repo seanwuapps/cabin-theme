@@ -14736,8 +14736,8 @@ var hideCursor = function hideCursor() {
 var pressCursor = function pressCursor() {
   (0, _animeEs.default)({
     targets: cursor,
-    scale: [0.9, 1],
-    duration: 300
+    scale: [0.6, 1],
+    duration: 500
   });
 };
 
@@ -14764,526 +14764,471 @@ gallerySliders.forEach(function (slider) {
       nextEl: nextEl,
       prevEl: prevEl
     },
-    effect: "coverflow",
+    effect: "custom",
     breakpoints: {
       768: {
+        allowTouchMove: false,
         slidesPerView: 2,
         slidesPerGroupSkip: 1
       }
     }
   });
 });
-},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js","lodash.debounce":"node_modules/lodash.debounce/index.js"}],"node_modules/rellax/rellax.js":[function(require,module,exports) {
+var contentBoxSliders = document.querySelectorAll(".contentbox-slider");
+contentBoxSliders.forEach(function (slider) {
+  var prevEl = slider.querySelector(".swiper-button-prev");
+  var nextEl = slider.querySelector(".swiper-button-next");
+  initNavCursor(prevEl, nextEl);
+  new _swiper.default(slider, {
+    pagination: {
+      el: slider.querySelector(".swiper-pagination"),
+      type: "fraction"
+    },
+    navigation: {
+      nextEl: nextEl,
+      prevEl: prevEl
+    },
+    breakpoints: {
+      768: {
+        allowTouchMove: false
+      }
+    }
+  });
+});
+},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js","lodash.debounce":"node_modules/lodash.debounce/index.js"}],"node_modules/simple-parallax-js/dist/simpleParallax.min.js":[function(require,module,exports) {
 var define;
-var global = arguments[3];
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// ------------------------------------------
-// Rellax.js
-// Buttery smooth parallax library
-// Copyright (c) 2016 Moe Amaya (@moeamaya)
-// MIT license
-//
-// Thanks to Paraxify.js and Jaime Cabllero
-// for parallax concepts
-// ------------------------------------------
+/*!
+ * simpleParallax.min - simpleParallax is a simple JavaScript library that gives your website parallax animations on any images or videos, 
+ * @date: 20-08-2020 14:0:14, 
+ * @version: 5.6.2,
+ * @link: https://simpleparallax.com/
+ */
+!function (t, e) {
+  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "object" == (typeof module === "undefined" ? "undefined" : _typeof(module)) ? module.exports = e() : "function" == typeof define && define.amd ? define("simpleParallax", [], e) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.simpleParallax = e() : t.simpleParallax = e();
+}(window, function () {
+  return function (t) {
+    var e = {};
 
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define([], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals (root is window)
-    root.Rellax = factory();
-  }
-}(typeof window !== "undefined" ? window : global, function () {
-  var Rellax = function(el, options){
+    function n(i) {
+      if (e[i]) return e[i].exports;
+      var r = e[i] = {
+        i: i,
+        l: !1,
+        exports: {}
+      };
+      return t[i].call(r.exports, r, r.exports, n), r.l = !0, r.exports;
+    }
+
+    return n.m = t, n.c = e, n.d = function (t, e, i) {
+      n.o(t, e) || Object.defineProperty(t, e, {
+        enumerable: !0,
+        get: i
+      });
+    }, n.r = function (t) {
+      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {
+        value: "Module"
+      }), Object.defineProperty(t, "__esModule", {
+        value: !0
+      });
+    }, n.t = function (t, e) {
+      if (1 & e && (t = n(t)), 8 & e) return t;
+      if (4 & e && "object" == _typeof(t) && t && t.__esModule) return t;
+      var i = Object.create(null);
+      if (n.r(i), Object.defineProperty(i, "default", {
+        enumerable: !0,
+        value: t
+      }), 2 & e && "string" != typeof t) for (var r in t) {
+        n.d(i, r, function (e) {
+          return t[e];
+        }.bind(null, r));
+      }
+      return i;
+    }, n.n = function (t) {
+      var e = t && t.__esModule ? function () {
+        return t.default;
+      } : function () {
+        return t;
+      };
+      return n.d(e, "a", e), e;
+    }, n.o = function (t, e) {
+      return Object.prototype.hasOwnProperty.call(t, e);
+    }, n.p = "", n(n.s = 0);
+  }([function (t, e, n) {
     "use strict";
 
-    var self = Object.create(Rellax.prototype);
+    n.r(e), n.d(e, "default", function () {
+      return x;
+    });
 
-    var posY = 0;
-    var screenY = 0;
-    var posX = 0;
-    var screenX = 0;
-    var blocks = [];
-    var pause = true;
-
-    // check what requestAnimationFrame to use, and if
-    // it's not supported, use the onscroll event
-    var loop = window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      function(callback){ return setTimeout(callback, 1000 / 60); };
-
-    // store the id for later use
-    var loopId = null;
-
-    // Test via a getter in the options object to see if the passive property is accessed
-    var supportsPassive = false;
-    try {
-      var opts = Object.defineProperty({}, 'passive', {
-        get: function() {
-          supportsPassive = true;
-        }
-      });
-      window.addEventListener("testPassive", null, opts);
-      window.removeEventListener("testPassive", null, opts);
-    } catch (e) {}
-
-    // check what cancelAnimation method to use
-    var clearLoop = window.cancelAnimationFrame || window.mozCancelAnimationFrame || clearTimeout;
-
-    // check which transform property to use
-    var transformProp = window.transformProp || (function(){
-        var testEl = document.createElement('div');
-        if (testEl.style.transform === null) {
-          var vendors = ['Webkit', 'Moz', 'ms'];
-          for (var vendor in vendors) {
-            if (testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
-              return vendors[vendor] + 'Transform';
-            }
-          }
-        }
-        return 'transform';
-      })();
-
-    // Default Settings
-    self.options = {
-      speed: -2,
-	    verticalSpeed: null,
-	    horizontalSpeed: null,
-      breakpoints: [576, 768, 1201],
-      center: false,
-      wrapper: null,
-      relativeToWrapper: false,
-      round: true,
-      vertical: true,
-      horizontal: false,
-      verticalScrollAxis: "y",
-      horizontalScrollAxis: "x",
-      callback: function() {},
+    var i = function i() {
+      return Element.prototype.closest && "IntersectionObserver" in window;
     };
 
-    // User defined options (might have more in the future)
-    if (options){
-      Object.keys(options).forEach(function(key){
-        self.options[key] = options[key];
-      });
-    }
-
-    function validateCustomBreakpoints () {
-      if (self.options.breakpoints.length === 3 && Array.isArray(self.options.breakpoints)) {
-        var isAscending = true;
-        var isNumerical = true;
-        var lastVal;
-        self.options.breakpoints.forEach(function (i) {
-          if (typeof i !== 'number') isNumerical = false;
-          if (lastVal !== null) {
-            if (i < lastVal) isAscending = false;
-          }
-          lastVal = i;
-        });
-        if (isAscending && isNumerical) return;
-      }
-      // revert defaults if set incorrectly
-      self.options.breakpoints = [576, 768, 1201];
-      console.warn("Rellax: You must pass an array of 3 numbers in ascending order to the breakpoints option. Defaults reverted");
-    }
-
-    if (options && options.breakpoints) {
-      validateCustomBreakpoints();
-    }
-
-    // By default, rellax class
-    if (!el) {
-      el = '.rellax';
-    }
-
-    // check if el is a className or a node
-    var elements = typeof el === 'string' ? document.querySelectorAll(el) : [el];
-
-    // Now query selector
-    if (elements.length > 0) {
-      self.elems = elements;
-    }
-
-    // The elements don't exist
-    else {
-      console.warn("Rellax: The elements you're trying to select don't exist.");
-      return;
-    }
-
-    // Has a wrapper and it exists
-    if (self.options.wrapper) {
-      if (!self.options.wrapper.nodeType) {
-        var wrapper = document.querySelector(self.options.wrapper);
-
-        if (wrapper) {
-          self.options.wrapper = wrapper;
-        } else {
-          console.warn("Rellax: The wrapper you're trying to use doesn't exist.");
-          return;
-        }
+    function r(t, e) {
+      for (var n = 0; n < e.length; n++) {
+        var i = e[n];
+        i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(t, i.key, i);
       }
     }
 
-    // set a placeholder for the current breakpoint
-    var currentBreakpoint;
-
-    // helper to determine current breakpoint
-    var getCurrentBreakpoint = function (w) {
-      var bp = self.options.breakpoints;
-      if (w < bp[0]) return 'xs';
-      if (w >= bp[0] && w < bp[1]) return 'sm';
-      if (w >= bp[1] && w < bp[2]) return 'md';
-      return 'lg';
-    };
-
-    // Get and cache initial position of all elements
-    var cacheBlocks = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        var block = createBlock(self.elems[i]);
-        blocks.push(block);
-      }
-    };
-
-
-    // Let's kick this script off
-    // Build array for cached element values
-    var init = function() {
-      for (var i = 0; i < blocks.length; i++){
-        self.elems[i].style.cssText = blocks[i].style;
-      }
-
-      blocks = [];
-
-      screenY = window.innerHeight;
-      screenX = window.innerWidth;
-      currentBreakpoint = getCurrentBreakpoint(screenX);
-
-      setPosition();
-
-      cacheBlocks();
-
-      animate();
-
-      // If paused, unpause and set listener for window resizing events
-      if (pause) {
-        window.addEventListener('resize', init);
-        pause = false;
-        // Start the loop
-        update();
-      }
-    };
-
-    // We want to cache the parallax blocks'
-    // values: base, top, height, speed
-    // el: is dom object, return: el cache values
-    var createBlock = function(el) {
-      var dataPercentage = el.getAttribute( 'data-rellax-percentage' );
-      var dataSpeed = el.getAttribute( 'data-rellax-speed' );
-      var dataXsSpeed = el.getAttribute( 'data-rellax-xs-speed' );
-      var dataMobileSpeed = el.getAttribute( 'data-rellax-mobile-speed' );
-      var dataTabletSpeed = el.getAttribute( 'data-rellax-tablet-speed' );
-      var dataDesktopSpeed = el.getAttribute( 'data-rellax-desktop-speed' );
-      var dataVerticalSpeed = el.getAttribute('data-rellax-vertical-speed');
-      var dataHorizontalSpeed = el.getAttribute('data-rellax-horizontal-speed');
-      var dataVericalScrollAxis = el.getAttribute('data-rellax-vertical-scroll-axis');
-      var dataHorizontalScrollAxis = el.getAttribute('data-rellax-horizontal-scroll-axis');
-      var dataZindex = el.getAttribute( 'data-rellax-zindex' ) || 0;
-      var dataMin = el.getAttribute( 'data-rellax-min' );
-      var dataMax = el.getAttribute( 'data-rellax-max' );
-      var dataMinX = el.getAttribute('data-rellax-min-x');
-      var dataMaxX = el.getAttribute('data-rellax-max-x');
-      var dataMinY = el.getAttribute('data-rellax-min-y');
-      var dataMaxY = el.getAttribute('data-rellax-max-y');
-      var mapBreakpoints;
-      var breakpoints = true;
-
-      if (!dataXsSpeed && !dataMobileSpeed && !dataTabletSpeed && !dataDesktopSpeed) {
-        breakpoints = false;
-      } else {
-        mapBreakpoints = {
-          'xs': dataXsSpeed,
-          'sm': dataMobileSpeed,
-          'md': dataTabletSpeed,
-          'lg': dataDesktopSpeed
+    var s = new (function () {
+      function t() {
+        !function (t, e) {
+          if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this.positions = {
+          top: 0,
+          bottom: 0,
+          height: 0
         };
       }
 
-      // initializing at scrollY = 0 (top of browser), scrollX = 0 (left of browser)
-      // ensures elements are positioned based on HTML layout.
-      //
-      // If the element has the percentage attribute, the posY and posX needs to be
-      // the current scroll position's value, so that the elements are still positioned based on HTML layout
-      var wrapperPosY = self.options.wrapper ? self.options.wrapper.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
-      // If the option relativeToWrapper is true, use the wrappers offset to top, subtracted from the current page scroll.
-      if (self.options.relativeToWrapper) {
-        var scrollPosY = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
-        wrapperPosY = scrollPosY - self.options.wrapper.offsetTop;
-      }
-      var posY = self.options.vertical ? ( dataPercentage || self.options.center ? wrapperPosY : 0 ) : 0;
-      var posX = self.options.horizontal ? ( dataPercentage || self.options.center ? self.options.wrapper ? self.options.wrapper.scrollLeft : (window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft) : 0 ) : 0;
-
-      var blockTop = posY + el.getBoundingClientRect().top;
-      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
-
-      var blockLeft = posX + el.getBoundingClientRect().left;
-      var blockWidth = el.clientWidth || el.offsetWidth || el.scrollWidth;
-
-      // apparently parallax equation everyone uses
-      var percentageY = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
-      var percentageX = dataPercentage ? dataPercentage : (posX - blockLeft + screenX) / (blockWidth + screenX);
-      if(self.options.center){ percentageX = 0.5; percentageY = 0.5; }
-
-      // Optional individual block speed as data attr, otherwise global speed
-      var speed = (breakpoints && mapBreakpoints[currentBreakpoint] !== null) ? Number(mapBreakpoints[currentBreakpoint]) : (dataSpeed ? dataSpeed : self.options.speed);
-      var verticalSpeed = dataVerticalSpeed ? dataVerticalSpeed : self.options.verticalSpeed;
-      var horizontalSpeed = dataHorizontalSpeed ? dataHorizontalSpeed : self.options.horizontalSpeed;
-
-      // Optional individual block movement axis direction as data attr, otherwise gobal movement direction
-      var verticalScrollAxis = dataVericalScrollAxis ? dataVericalScrollAxis : self.options.verticalScrollAxis;
-      var horizontalScrollAxis = dataHorizontalScrollAxis ? dataHorizontalScrollAxis : self.options.horizontalScrollAxis;
-
-      var bases = updatePosition(percentageX, percentageY, speed, verticalSpeed, horizontalSpeed);
-
-      // ~~Store non-translate3d transforms~~
-      // Store inline styles and extract transforms
-      var style = el.style.cssText;
-      var transform = '';
-
-      // Check if there's an inline styled transform
-      var searchResult = /transform\s*:/i.exec(style);
-      if (searchResult) {
-        // Get the index of the transform
-        var index = searchResult.index;
-
-        // Trim the style to the transform point and get the following semi-colon index
-        var trimmedStyle = style.slice(index);
-        var delimiter = trimmedStyle.indexOf(';');
-
-        // Remove "transform" string and save the attribute
-        if (delimiter) {
-          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g,'');
-        } else {
-          transform = " " + trimmedStyle.slice(11).replace(/\s/g,'');
+      var e, n, i;
+      return e = t, (n = [{
+        key: "setViewportTop",
+        value: function value(t) {
+          return this.positions.top = t ? t.scrollTop : window.pageYOffset, this.positions;
         }
+      }, {
+        key: "setViewportBottom",
+        value: function value() {
+          return this.positions.bottom = this.positions.top + this.positions.height, this.positions;
+        }
+      }, {
+        key: "setViewportAll",
+        value: function value(t) {
+          return this.positions.top = t ? t.scrollTop : window.pageYOffset, this.positions.height = t ? t.clientHeight : document.documentElement.clientHeight, this.positions.bottom = this.positions.top + this.positions.height, this.positions;
+        }
+      }]) && r(e.prototype, n), i && r(e, i), t;
+    }())(),
+        o = function o(t) {
+      return NodeList.prototype.isPrototypeOf(t) || HTMLCollection.prototype.isPrototypeOf(t) ? Array.from(t) : "string" == typeof t || t instanceof String ? document.querySelectorAll(t) : [t];
+    },
+        a = function () {
+      for (var t, e = "transform webkitTransform mozTransform oTransform msTransform".split(" "), n = 0; void 0 === t;) {
+        t = void 0 !== document.createElement("div").style[e[n]] ? e[n] : void 0, n += 1;
       }
 
-      return {
-        baseX: bases.x,
-        baseY: bases.y,
-        top: blockTop,
-        left: blockLeft,
-        height: blockHeight,
-        width: blockWidth,
-        speed: speed,
-        verticalSpeed: verticalSpeed,
-        horizontalSpeed: horizontalSpeed,
-        verticalScrollAxis: verticalScrollAxis,
-        horizontalScrollAxis: horizontalScrollAxis,
-        style: style,
-        transform: transform,
-        zindex: dataZindex,
-        min: dataMin,
-        max: dataMax,
-        minX: dataMinX,
-        maxX: dataMaxX,
-        minY: dataMinY,
-        maxY: dataMaxY
-      };
+      return t;
+    }(),
+        l = function l(t) {
+      return "img" !== t.tagName.toLowerCase() && "picture" !== t.tagName.toLowerCase() || !!t && !!t.complete && (void 0 === t.naturalWidth || 0 !== t.naturalWidth);
     };
 
-    // set scroll position (posY, posX)
-    // side effect method is not ideal, but okay for now
-    // returns true if the scroll changed, false if nothing happened
-    var setPosition = function() {
-      var oldY = posY;
-      var oldX = posX;
+    function u(t) {
+      return function (t) {
+        if (Array.isArray(t)) return c(t);
+      }(t) || function (t) {
+        if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t);
+      }(t) || function (t, e) {
+        if (!t) return;
+        if ("string" == typeof t) return c(t, e);
+        var n = Object.prototype.toString.call(t).slice(8, -1);
+        "Object" === n && t.constructor && (n = t.constructor.name);
+        if ("Map" === n || "Set" === n) return Array.from(t);
+        if ("Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return c(t, e);
+      }(t) || function () {
+        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }();
+    }
 
-      posY = self.options.wrapper ? self.options.wrapper.scrollTop : (document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset;
-      posX = self.options.wrapper ? self.options.wrapper.scrollLeft : (document.documentElement || document.body.parentNode || document.body).scrollLeft || window.pageXOffset;
-      // If option relativeToWrapper is true, use relative wrapper value instead.
-      if (self.options.relativeToWrapper) {
-        var scrollPosY = (document.documentElement || document.body.parentNode || document.body).scrollTop || window.pageYOffset;
-        posY = scrollPosY - self.options.wrapper.offsetTop;
+    function c(t, e) {
+      (null == e || e > t.length) && (e = t.length);
+
+      for (var n = 0, i = new Array(e); n < e; n++) {
+        i[n] = t[n];
       }
 
+      return i;
+    }
 
-      if (oldY != posY && self.options.vertical) {
-        // scroll changed, return true
-        return true;
+    function h(t, e) {
+      for (var n = 0; n < e.length; n++) {
+        var i = e[n];
+        i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(t, i.key, i);
+      }
+    }
+
+    var f = function () {
+      function t(e, n) {
+        var i = this;
+        !function (t, e) {
+          if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), this.element = e, this.elementContainer = e, this.settings = n, this.isVisible = !0, this.isInit = !1, this.oldTranslateValue = -1, this.init = this.init.bind(this), this.customWrapper = this.settings.customWrapper && this.element.closest(this.settings.customWrapper) ? this.element.closest(this.settings.customWrapper) : null, l(e) ? this.init() : this.element.addEventListener("load", function () {
+          setTimeout(function () {
+            i.init(!0);
+          }, 50);
+        });
       }
 
-      if (oldX != posX && self.options.horizontal) {
-        // scroll changed, return true
-        return true;
-      }
+      var e, n, i;
+      return e = t, (n = [{
+        key: "init",
+        value: function value(t) {
+          var e = this;
+          this.isInit || (t && (this.rangeMax = null), this.element.closest(".simpleParallax") || (!1 === this.settings.overflow && this.wrapElement(this.element), this.setTransformCSS(), this.getElementOffset(), this.intersectionObserver(), this.getTranslateValue(), this.animate(), this.settings.delay > 0 ? setTimeout(function () {
+            e.setTransitionCSS(), e.elementContainer.classList.add("simple-parallax-initialized");
+          }, 10) : this.elementContainer.classList.add("simple-parallax-initialized"), this.isInit = !0));
+        }
+      }, {
+        key: "wrapElement",
+        value: function value() {
+          var t = this.element.closest("picture") || this.element,
+              e = this.customWrapper || document.createElement("div");
+          e.classList.add("simpleParallax"), e.style.overflow = "hidden", this.customWrapper || (t.parentNode.insertBefore(e, t), e.appendChild(t)), this.elementContainer = e;
+        }
+      }, {
+        key: "unWrapElement",
+        value: function value() {
+          var t = this.elementContainer;
+          this.customWrapper ? (t.classList.remove("simpleParallax"), t.style.overflow = "") : t.replaceWith.apply(t, u(t.childNodes));
+        }
+      }, {
+        key: "setTransformCSS",
+        value: function value() {
+          !1 === this.settings.overflow && (this.element.style[a] = "scale(".concat(this.settings.scale, ")")), this.element.style.willChange = "transform";
+        }
+      }, {
+        key: "setTransitionCSS",
+        value: function value() {
+          this.element.style.transition = "transform ".concat(this.settings.delay, "s ").concat(this.settings.transition);
+        }
+      }, {
+        key: "unSetStyle",
+        value: function value() {
+          this.element.style.willChange = "", this.element.style[a] = "", this.element.style.transition = "";
+        }
+      }, {
+        key: "getElementOffset",
+        value: function value() {
+          var t = this.elementContainer.getBoundingClientRect();
 
-      // scroll did not change
-      return false;
-    };
-
-    // Ahh a pure function, gets new transform value
-    // based on scrollPosition and speed
-    // Allow for decimal pixel values
-    var updatePosition = function(percentageX, percentageY, speed, verticalSpeed, horizontalSpeed) {
-      var result = {};
-      var valueX = ((horizontalSpeed ? horizontalSpeed : speed) * (100 * (1 - percentageX)));
-      var valueY = ((verticalSpeed ? verticalSpeed : speed) * (100 * (1 - percentageY)));
-
-      result.x = self.options.round ? Math.round(valueX) : Math.round(valueX * 100) / 100;
-      result.y = self.options.round ? Math.round(valueY) : Math.round(valueY * 100) / 100;
-
-      return result;
-    };
-
-    // Remove event listeners and loop again
-    var deferredUpdate = function() {
-      window.removeEventListener('resize', deferredUpdate);
-      window.removeEventListener('orientationchange', deferredUpdate);
-      (self.options.wrapper ? self.options.wrapper : window).removeEventListener('scroll', deferredUpdate);
-      (self.options.wrapper ? self.options.wrapper : document).removeEventListener('touchmove', deferredUpdate);
-
-      // loop again
-      loopId = loop(update);
-    };
-
-    // Loop
-    var update = function() {
-      if (setPosition() && pause === false) {
-        animate();
-
-        // loop again
-        loopId = loop(update);
-      } else {
-        loopId = null;
-
-        // Don't animate until we get a position updating event
-        window.addEventListener('resize', deferredUpdate);
-        window.addEventListener('orientationchange', deferredUpdate);
-        (self.options.wrapper ? self.options.wrapper : window).addEventListener('scroll', deferredUpdate, supportsPassive ? { passive: true } : false);
-        (self.options.wrapper ? self.options.wrapper : document).addEventListener('touchmove', deferredUpdate, supportsPassive ? { passive: true } : false);
-      }
-    };
-
-    // Transform3d on parallax element
-    var animate = function() {
-      var positions;
-      for (var i = 0; i < self.elems.length; i++){
-        // Determine relevant movement directions
-        var verticalScrollAxis = blocks[i].verticalScrollAxis.toLowerCase();
-        var horizontalScrollAxis = blocks[i].horizontalScrollAxis.toLowerCase();
-        var verticalScrollX = verticalScrollAxis.indexOf("x") != -1 ? posY : 0;
-        var verticalScrollY = verticalScrollAxis.indexOf("y") != -1 ? posY : 0;
-        var horizontalScrollX = horizontalScrollAxis.indexOf("x") != -1 ? posX : 0;
-        var horizontalScrollY = horizontalScrollAxis.indexOf("y") != -1 ? posX : 0;
-
-        var percentageY = ((verticalScrollY + horizontalScrollY - blocks[i].top + screenY) / (blocks[i].height + screenY));
-        var percentageX = ((verticalScrollX + horizontalScrollX - blocks[i].left + screenX) / (blocks[i].width + screenX));
-
-        // Subtracting initialize value, so element stays in same spot as HTML
-        positions = updatePosition(percentageX, percentageY, blocks[i].speed, blocks[i].verticalSpeed, blocks[i].horizontalSpeed);
-        var positionY = positions.y - blocks[i].baseY;
-        var positionX = positions.x - blocks[i].baseX;
-
-        // The next two "if" blocks go like this:
-        // Check if a limit is defined (first "min", then "max");
-        // Check if we need to change the Y or the X
-        // (Currently working only if just one of the axes is enabled)
-        // Then, check if the new position is inside the allowed limit
-        // If so, use new position. If not, set position to limit.
-
-        // Check if a min limit is defined
-        if (blocks[i].min !== null) {
-          if (self.options.vertical && !self.options.horizontal) {
-            positionY = positionY <= blocks[i].min ? blocks[i].min : positionY;
+          if (this.elementHeight = t.height, this.elementTop = t.top + s.positions.top, this.settings.customContainer) {
+            var e = this.settings.customContainer.getBoundingClientRect();
+            this.elementTop = t.top - e.top + s.positions.top;
           }
-          if (self.options.horizontal && !self.options.vertical) {
-            positionX = positionX <= blocks[i].min ? blocks[i].min : positionX;
+
+          this.elementBottom = this.elementHeight + this.elementTop;
+        }
+      }, {
+        key: "buildThresholdList",
+        value: function value() {
+          for (var t = [], e = 1; e <= this.elementHeight; e++) {
+            var n = e / this.elementHeight;
+            t.push(n);
+          }
+
+          return t;
+        }
+      }, {
+        key: "intersectionObserver",
+        value: function value() {
+          var t = {
+            root: null,
+            threshold: this.buildThresholdList()
+          };
+          this.observer = new IntersectionObserver(this.intersectionObserverCallback.bind(this), t), this.observer.observe(this.element);
+        }
+      }, {
+        key: "intersectionObserverCallback",
+        value: function value(t) {
+          var e = this;
+          t.forEach(function (t) {
+            t.isIntersecting ? e.isVisible = !0 : e.isVisible = !1;
+          });
+        }
+      }, {
+        key: "checkIfVisible",
+        value: function value() {
+          return this.elementBottom > s.positions.top && this.elementTop < s.positions.bottom;
+        }
+      }, {
+        key: "getRangeMax",
+        value: function value() {
+          var t = this.element.clientHeight;
+          this.rangeMax = t * this.settings.scale - t;
+        }
+      }, {
+        key: "getTranslateValue",
+        value: function value() {
+          var t = ((s.positions.bottom - this.elementTop) / ((s.positions.height + this.elementHeight) / 100)).toFixed(1);
+          return t = Math.min(100, Math.max(0, t)), 0 !== this.settings.maxTransition && t > this.settings.maxTransition && (t = this.settings.maxTransition), this.oldPercentage !== t && (this.rangeMax || this.getRangeMax(), this.translateValue = (t / 100 * this.rangeMax - this.rangeMax / 2).toFixed(0), this.oldTranslateValue !== this.translateValue && (this.oldPercentage = t, this.oldTranslateValue = this.translateValue, !0));
+        }
+      }, {
+        key: "animate",
+        value: function value() {
+          var t,
+              e = 0,
+              n = 0;
+          (this.settings.orientation.includes("left") || this.settings.orientation.includes("right")) && (n = "".concat(this.settings.orientation.includes("left") ? -1 * this.translateValue : this.translateValue, "px")), (this.settings.orientation.includes("up") || this.settings.orientation.includes("down")) && (e = "".concat(this.settings.orientation.includes("up") ? -1 * this.translateValue : this.translateValue, "px")), t = !1 === this.settings.overflow ? "translate3d(".concat(n, ", ").concat(e, ", 0) scale(").concat(this.settings.scale, ")") : "translate3d(".concat(n, ", ").concat(e, ", 0)"), this.element.style[a] = t;
+        }
+      }]) && h(e.prototype, n), i && h(e, i), t;
+    }();
+
+    function m(t) {
+      return function (t) {
+        if (Array.isArray(t)) return y(t);
+      }(t) || function (t) {
+        if ("undefined" != typeof Symbol && Symbol.iterator in Object(t)) return Array.from(t);
+      }(t) || d(t) || function () {
+        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }();
+    }
+
+    function p(t, e) {
+      return function (t) {
+        if (Array.isArray(t)) return t;
+      }(t) || function (t, e) {
+        if ("undefined" == typeof Symbol || !(Symbol.iterator in Object(t))) return;
+        var n = [],
+            i = !0,
+            r = !1,
+            s = void 0;
+
+        try {
+          for (var o, a = t[Symbol.iterator](); !(i = (o = a.next()).done) && (n.push(o.value), !e || n.length !== e); i = !0) {
+            ;
+          }
+        } catch (t) {
+          r = !0, s = t;
+        } finally {
+          try {
+            i || null == a.return || a.return();
+          } finally {
+            if (r) throw s;
           }
         }
 
-        // Check if directional min limits are defined
-        if (blocks[i].minY != null) {
-            positionY = positionY <= blocks[i].minY ? blocks[i].minY : positionY;
-        }
-        if (blocks[i].minX != null) {
-            positionX = positionX <= blocks[i].minX ? blocks[i].minX : positionX;
-        }
+        return n;
+      }(t, e) || d(t, e) || function () {
+        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+      }();
+    }
 
-        // Check if a max limit is defined
-        if (blocks[i].max !== null) {
-          if (self.options.vertical && !self.options.horizontal) {
-            positionY = positionY >= blocks[i].max ? blocks[i].max : positionY;
+    function d(t, e) {
+      if (t) {
+        if ("string" == typeof t) return y(t, e);
+        var n = Object.prototype.toString.call(t).slice(8, -1);
+        return "Object" === n && t.constructor && (n = t.constructor.name), "Map" === n || "Set" === n ? Array.from(t) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? y(t, e) : void 0;
+      }
+    }
+
+    function y(t, e) {
+      (null == e || e > t.length) && (e = t.length);
+
+      for (var n = 0, i = new Array(e); n < e; n++) {
+        i[n] = t[n];
+      }
+
+      return i;
+    }
+
+    function v(t, e) {
+      for (var n = 0; n < e.length; n++) {
+        var i = e[n];
+        i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(t, i.key, i);
+      }
+    }
+
+    var g,
+        b,
+        w = !1,
+        T = [],
+        x = function () {
+      function t(e, n) {
+        if (function (t, e) {
+          if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+        }(this, t), e && i()) {
+          if (this.elements = o(e), this.defaults = {
+            delay: 0,
+            orientation: "up",
+            scale: 1.3,
+            overflow: !1,
+            transition: "cubic-bezier(0,0,0,1)",
+            customContainer: "",
+            customWrapper: "",
+            maxTransition: 0
+          }, this.settings = Object.assign(this.defaults, n), this.settings.customContainer) {
+            var r = p(o(this.settings.customContainer), 1);
+            this.customContainer = r[0];
           }
-          if (self.options.horizontal && !self.options.vertical) {
-            positionX = positionX >= blocks[i].max ? blocks[i].max : positionX;
-          }
+
+          this.lastPosition = -1, this.resizeIsDone = this.resizeIsDone.bind(this), this.refresh = this.refresh.bind(this), this.proceedRequestAnimationFrame = this.proceedRequestAnimationFrame.bind(this), this.init();
         }
-
-        // Check if directional max limits are defined
-        if (blocks[i].maxY != null) {
-            positionY = positionY >= blocks[i].maxY ? blocks[i].maxY : positionY;
-        }
-        if (blocks[i].maxX != null) {
-            positionX = positionX >= blocks[i].maxX ? blocks[i].maxX : positionX;
-        }
-
-        var zindex = blocks[i].zindex;
-
-        // Move that element
-        // (Set the new translation and append initial inline transforms.)
-        var translate = 'translate3d(' + (self.options.horizontal ? positionX : '0') + 'px,' + (self.options.vertical ? positionY : '0') + 'px,' + zindex + 'px) ' + blocks[i].transform;
-        self.elems[i].style[transformProp] = translate;
-      }
-      self.options.callback(positions);
-    };
-
-    self.destroy = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        self.elems[i].style.cssText = blocks[i].style;
       }
 
-      // Remove resize event listener if not pause, and pause
-      if (!pause) {
-        window.removeEventListener('resize', init);
-        pause = true;
-      }
-
-      // Clear the animation loop to prevent possible memory leak
-      clearLoop(loopId);
-      loopId = null;
-    };
-
-    // Init
-    init();
-
-    // Allow to recalculate the initial values whenever we want
-    self.refresh = init;
-
-    return self;
-  };
-  return Rellax;
-}));
-
+      var e, n, r;
+      return e = t, (n = [{
+        key: "init",
+        value: function value() {
+          var t = this;
+          s.setViewportAll(this.customContainer), T = [].concat(m(this.elements.map(function (e) {
+            return new f(e, t.settings);
+          })), m(T)), w || (this.proceedRequestAnimationFrame(), window.addEventListener("resize", this.resizeIsDone), w = !0);
+        }
+      }, {
+        key: "resizeIsDone",
+        value: function value() {
+          clearTimeout(b), b = setTimeout(this.refresh, 200);
+        }
+      }, {
+        key: "proceedRequestAnimationFrame",
+        value: function value() {
+          var t = this;
+          s.setViewportTop(this.customContainer), this.lastPosition !== s.positions.top ? (s.setViewportBottom(), T.forEach(function (e) {
+            t.proceedElement(e);
+          }), g = window.requestAnimationFrame(this.proceedRequestAnimationFrame), this.lastPosition = s.positions.top) : g = window.requestAnimationFrame(this.proceedRequestAnimationFrame);
+        }
+      }, {
+        key: "proceedElement",
+        value: function value(t) {
+          (this.customContainer ? t.checkIfVisible() : t.isVisible) && t.getTranslateValue() && t.animate();
+        }
+      }, {
+        key: "refresh",
+        value: function value() {
+          s.setViewportAll(this.customContainer), T.forEach(function (t) {
+            t.getElementOffset(), t.getRangeMax();
+          }), this.lastPosition = -1;
+        }
+      }, {
+        key: "destroy",
+        value: function value() {
+          var t = this,
+              e = [];
+          T = T.filter(function (n) {
+            return t.elements.includes(n.element) ? (e.push(n), !1) : n;
+          }), e.forEach(function (e) {
+            e.unSetStyle(), !1 === t.settings.overflow && e.unWrapElement();
+          }), T.length || (window.cancelAnimationFrame(g), window.removeEventListener("resize", this.refresh), w = !1);
+        }
+      }]) && v(e.prototype, n), r && v(e, r), t;
+    }();
+  }]).default;
+});
 },{}],"js/parallax.js":[function(require,module,exports) {
 "use strict";
 
-var _rellax = _interopRequireDefault(require("rellax"));
+var _simpleParallaxJs = _interopRequireDefault(require("simple-parallax-js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-new _rellax.default(".hero-slide-img");
-new _rellax.default(".featured-parallax");
-},{"rellax":"node_modules/rellax/rellax.js"}],"js/menu.js":[function(require,module,exports) {
+new _simpleParallaxJs.default(document.querySelectorAll(".hero-slide-img"), {
+  orientation: "down",
+  scale: 1.4,
+  overflow: true,
+  transition: "none"
+});
+new _simpleParallaxJs.default(document.querySelectorAll(".featured-parallax"), {
+  scale: 1.5
+});
+new _simpleParallaxJs.default(document.querySelectorAll(".contentbox .text"), {
+  scale: 1.5,
+  overflow: true,
+  transition: "none"
+});
+},{"simple-parallax-js":"node_modules/simple-parallax-js/dist/simpleParallax.min.js"}],"js/menu.js":[function(require,module,exports) {
 "use strict";
 
 var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));

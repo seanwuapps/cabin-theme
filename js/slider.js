@@ -88,8 +88,8 @@ const hideCursor = () => {
 const pressCursor = () => {
   anime({
     targets: cursor,
-    scale: [0.9, 1],
-    duration: 300,
+    scale: [0.6, 1],
+    duration: 500,
   });
 };
 const initNavCursor = (prevEl, nextEl) => {
@@ -115,11 +115,34 @@ gallerySliders.forEach((slider) => {
       nextEl,
       prevEl,
     },
-    effect: "coverflow",
+    effect: "custom",
     breakpoints: {
       768: {
+        allowTouchMove: false,
         slidesPerView: 2,
         slidesPerGroupSkip: 1,
+      },
+    },
+  });
+});
+
+const contentBoxSliders = document.querySelectorAll(".contentbox-slider");
+contentBoxSliders.forEach((slider) => {
+  const prevEl = slider.querySelector(".swiper-button-prev");
+  const nextEl = slider.querySelector(".swiper-button-next");
+  initNavCursor(prevEl, nextEl);
+  new Swiper(slider, {
+    pagination: {
+      el: slider.querySelector(".swiper-pagination"),
+      type: "fraction",
+    },
+    navigation: {
+      nextEl,
+      prevEl,
+    },
+    breakpoints: {
+      768: {
+        allowTouchMove: false,
       },
     },
   });

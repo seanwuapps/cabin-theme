@@ -10878,6 +10878,9 @@ textarea.form-control-lg {
   --nav-overlay-bg-color: #212529;
   --header-padding: 2rem;
   --logo-size: 5rem;
+  --shadow-small: 0 0 0.25rem 0 rgba(0, 0, 0, 0.2);
+  --shadow-big: 0 0 1.25rem rgba(0, 0, 0, 0.4);
+  --header-bar-shadow: var(--shadow-small);
 }
 
 body {
@@ -10984,12 +10987,13 @@ section.xl {
 }
 
 section.feature {
-  height: 50vh;
+  padding: 4rem 0;
+  height: 60vh;
   overflow: hidden;
 }
 section.feature .featured-parallax {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 60vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -10998,37 +11002,52 @@ section.feature .featured-parallax {
 
 .custom-cursor {
   pointer-events: none;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   position: fixed;
   top: 0;
   left: 0;
-  margin-top: -2rem;
-  margin-left: -2rem;
+  margin-top: -2.5rem;
+  margin-left: -2.5rem;
   z-index: 9999;
   opacity: 0;
   display: -ms-grid;
   display: grid;
   place-items: center;
-  border-radius: 0.125rem;
 }
 .custom-cursor svg {
-  fill: #f7382d;
+  fill: #b71107;
   position: relative;
   z-index: 1;
-  width: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 .custom-cursor::before {
   content: "";
   position: absolute;
   inset: 0;
   transform: rotate(-45deg);
-  background: white;
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(0.375rem);
+          backdrop-filter: blur(0.375rem);
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: var(--shadow-big);
+}
+
+.divider {
+  display: block;
+  margin: 2rem 0;
+  width: 80%;
+  height: 0.0625rem;
+  background-color: #f7382d;
+}
+@media (min-width: 992px) {
+  .divider {
+    width: 50%;
+  }
 }
 
 header {
-  --header-bar-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11132,6 +11151,13 @@ header .nav-overlay .nav-container {
   width: 100%;
   height: auto;
   background-color: rgba(58, 54, 54, 0.8);
+}
+@media (min-width: 992px) {
+  header .nav-overlay .nav-container {
+    display: flex;
+    place-items: center;
+    padding-top: 2rem;
+  }
 }
 header .main-nav {
   text-align: end;
@@ -11374,8 +11400,7 @@ header .header-bar-desktop {
 }
 .gallery-slider-container .swiper-slide {
   position: relative;
-  aspect-ratio: 4/3;
-  transition: all 0.15s ease-in-out 300ms;
+  aspect-ratio: 1;
 }
 .gallery-slider-container .swiper-slide img {
   position: absolute;
@@ -11385,6 +11410,7 @@ header .header-bar-desktop {
   transform-origin: top left;
   max-width: 100%;
   width: 100%;
+  height: 100%;
   z-index: -1;
 }
 .gallery-slider-container .swiper-slide h3, .gallery-slider-container .swiper-slide .h3 {
@@ -11393,50 +11419,100 @@ header .header-bar-desktop {
   left: 2vw;
   color: white;
   font-size: 2rem;
+  z-index: 2;
+}
+.gallery-slider-container .swiper-slide::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+  inset: 0;
 }
 .gallery-slider-container .swiper-slide.swiper-slide-active {
   width: 100%;
 }
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-active {
-    width: 60vw !important;
-    margin-right: 6vw;
-    margin-left: 4vw;
+    width: 60% !important;
+    margin-right: 6%;
+    margin-left: 4%;
   }
 }
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-next {
-    width: 30vw !important;
+    aspect-ratio: 3/4;
+    width: 30% !important;
   }
 }
-.gallery-slider-container .swiper-button-prev,
-.gallery-slider-container .swiper-button-next {
+
+.cabin-slider .swiper-button-prev,
+.cabin-slider .swiper-button-next {
   width: 44%;
   height: 100%;
   top: 0;
   cursor: none;
 }
-.gallery-slider-container .swiper-button-prev::after,
-.gallery-slider-container .swiper-button-next::after {
+.cabin-slider .swiper-button-prev::after,
+.cabin-slider .swiper-button-next::after {
   content: none;
 }
-.gallery-slider-container .swiper-button-prev {
+.cabin-slider .swiper-button-prev {
   width: 55%;
 }
-.gallery-slider-container .swiper-pagination {
+.cabin-slider .swiper-pagination {
   text-align: left;
   font-size: 1rem;
   display: flex;
   align-items: center;
 }
-.gallery-slider-container .swiper-pagination .swiper-pagination-current {
+.cabin-slider .swiper-pagination .swiper-pagination-current {
   font-family: "Lora", serif;
-  padding-left: 3vw;
+  padding-left: 4%;
   font-size: 2em;
   padding-right: 0.25rem;
 }
-.gallery-slider-container .swiper-pagination .swiper-pagination-total {
+.cabin-slider .swiper-pagination .swiper-pagination-total {
   padding: 0.25rem;
+}
+
+.contentbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.contentbox img {
+  flex: 1;
+  aspect-ratio: 1/1.2;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 992px) {
+  .contentbox img {
+    max-width: 70%;
+    min-width: 70%;
+  }
+}
+.contentbox .text {
+  position: absolute;
+  padding: 2rem;
+  max-height: 100%;
+  height: auto;
+  background: white;
+  box-shadow: var(--shadow-big);
+  width: 80%;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+@media (min-width: 992px) {
+  .contentbox .text {
+    padding: 3rem;
+    left: 50%;
+    width: 40%;
+  }
+}
+.contentbox .text h4, .contentbox .text .h4 {
+  padding-bottom: 1rem;
 }
 /**
  * Swiper 6.7.5
