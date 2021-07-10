@@ -1,3 +1,42 @@
 @import "./sliders/hero.scss";
 @import "./sliders/gallery.scss";
 @import "./sliders/contentbox-gallery.scss";
+
+.cabin-slider {
+  .swiper-slide {
+    overflow: hidden;
+    transition: all 0.8s ease;
+    img {
+      transition: transform 1s ease;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44%;
+    height: 100%;
+    top: 0;
+    cursor: none;
+    &::after {
+      content: none;
+    }
+  }
+
+  .swiper-button-prev {
+    width: 55%;
+  }
+  .swiper-pagination {
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    .swiper-pagination-current {
+      font-family: $lora;
+      padding-left: 4%;
+      font-size: 2em;
+      padding-right: 4px;
+    }
+    .swiper-pagination-total {
+      padding: 4px;
+    }
+  }
+}

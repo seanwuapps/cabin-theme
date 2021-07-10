@@ -115,6 +115,7 @@ gallerySliders.forEach((slider) => {
       nextEl,
       prevEl,
     },
+    speed: 1000,
     effect: "custom",
     breakpoints: {
       768: {
@@ -140,6 +141,7 @@ contentBoxSliders.forEach((slider) => {
       nextEl,
       prevEl,
     },
+    speed: 1000,
     breakpoints: {
       768: {
         allowTouchMove: false,

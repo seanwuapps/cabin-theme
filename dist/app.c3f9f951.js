@@ -14764,6 +14764,7 @@ gallerySliders.forEach(function (slider) {
       nextEl: nextEl,
       prevEl: prevEl
     },
+    speed: 1000,
     effect: "custom",
     breakpoints: {
       768: {
@@ -14788,6 +14789,7 @@ contentBoxSliders.forEach(function (slider) {
       nextEl: nextEl,
       prevEl: prevEl
     },
+    speed: 1000,
     breakpoints: {
       768: {
         allowTouchMove: false
@@ -15354,7 +15356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "20415" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "29421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -17,12 +17,12 @@ section.xl {
 }
 
 section.feature {
-  padding: 4rem 0;
-  height: 60vh;
+  margin: 4rem 0;
+  height: 50vh;
   overflow: hidden;
   .featured-parallax {
     width: 100vw;
-    height: 60vh;
+    height: 50vh;
     object-fit: cover;
     object-position: center;
   }

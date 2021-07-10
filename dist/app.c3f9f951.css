@@ -10987,13 +10987,13 @@ section.xl {
 }
 
 section.feature {
-  padding: 4rem 0;
-  height: 60vh;
+  margin: 4rem 0;
+  height: 50vh;
   overflow: hidden;
 }
 section.feature .featured-parallax {
   width: 100vw;
-  height: 60vh;
+  height: 50vh;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -11437,6 +11437,12 @@ header .header-bar-desktop {
     margin-left: 4%;
   }
 }
+.gallery-slider-container .swiper-slide.swiper-slide-active img {
+  transform: scale(1);
+}
+.gallery-slider-container .swiper-slide.swiper-slide-next img {
+  transform: scale(1.5);
+}
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-next {
     aspect-ratio: 3/4;
@@ -11444,6 +11450,30 @@ header .header-bar-desktop {
   }
 }
 
+.contentbox-slider .swiper-wrapper {
+  transition-delay: 0.1s;
+}
+.contentbox-slider .swiper-slide {
+  overflow: hidden;
+}
+.contentbox-slider .swiper-slide img {
+  transition: transform 1s ease-in-out;
+}
+.contentbox-slider .swiper-slide-next img,
+.contentbox-slider .swiper-slide-prev img {
+  transform: scale(1.75);
+}
+.contentbox-slider .swiper-slide-active img {
+  transform: scale(1);
+}
+
+.cabin-slider .swiper-slide {
+  overflow: hidden;
+  transition: all 0.8s ease;
+}
+.cabin-slider .swiper-slide img {
+  transition: transform 1s ease;
+}
 .cabin-slider .swiper-button-prev,
 .cabin-slider .swiper-button-next {
   width: 44%;
