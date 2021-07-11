@@ -5,13 +5,12 @@
     padding-bottom: 4rem;
   }
   .swiper-slide {
+    padding: 0 1rem;
     position: relative;
     aspect-ratio: 1;
     transition: all 0.8s ease-out;
     img {
       transition: transform 1s ease-out;
-    }
-    img {
       position: absolute;
       inset: 0;
       object-fit: cover;
@@ -56,7 +55,7 @@
       }
       @include tablet {
         aspect-ratio: 1/1.1;
-        width: 30% !important;
+        width: 40% !important;
       }
     }
   }
