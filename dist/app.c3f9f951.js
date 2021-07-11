@@ -14647,18 +14647,21 @@ require("swiper/swiper-bundle.min.css");
 
 var _animeEs = _interopRequireDefault(require("animejs/lib/anime.es.js"));
 
-var _lodash = _interopRequireDefault(require("lodash.debounce"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+var easing = {
+  default: "easeOutCubic",
+  linear: "linear"
+};
 /*************************************************************
  * Hero slider
  *************************************************************/
 // configure Swiper to use modules
+
 _swiper.default.use([_swiper.Navigation, _swiper.Pagination, _swiper.Autoplay, _swiper.Parallax, _swiper.EffectFade]);
 
 var speed = 8000;
@@ -14684,14 +14687,14 @@ var swiper = new _swiper.default(".hero-slider", {
 (0, _animeEs.default)({
   targets: ".hero-slider-timer",
   scaleX: [0, 1],
-  easing: "linear",
+  easing: easing.linear,
   duration: speed
 });
 swiper.on("slideChange", function () {
   (0, _animeEs.default)({
     targets: ".hero-slider-timer",
     scaleX: [0, 1],
-    easing: "linear",
+    easing: easing.linear,
     duration: speed
   });
 });
@@ -14708,7 +14711,7 @@ var moveNextCursor = function moveNextCursor(e) {
     translateX: e.clientX,
     translateY: e.clientY,
     rotate: 180,
-    easing: "easeOutCubic",
+    easing: easing.default,
     duration: 50
   });
 };
@@ -14720,7 +14723,7 @@ var movePrevCursor = function movePrevCursor(e) {
     translateX: e.clientX,
     translateY: e.clientY,
     rotate: 0,
-    easing: "easeOutCubic",
+    easing: easing.default,
     duration: 50
   });
 };
@@ -14780,7 +14783,7 @@ contentBoxSliders.forEach(function (slider) {
   var prevEl = slider.querySelector(".swiper-button-prev");
   var nextEl = slider.querySelector(".swiper-button-next");
   initNavCursor(prevEl, nextEl);
-  new _swiper.default(slider, {
+  var contentBoxGallery = new _swiper.default(slider, {
     pagination: {
       el: slider.querySelector(".swiper-pagination"),
       type: "fraction"
@@ -14790,14 +14793,25 @@ contentBoxSliders.forEach(function (slider) {
       prevEl: prevEl
     },
     speed: 1000,
+    spaceBetween: 10,
     breakpoints: {
       768: {
         allowTouchMove: false
       }
     }
   });
+  contentBoxGallery.on("slideChange", function (swiper) {
+    console.log(swiper.activeIndex, swiper.slides);
+    (0, _animeEs.default)({
+      targets: swiper.slides[swiper.activeIndex].querySelector(".text"),
+      opacity: [0, 1],
+      duration: 500,
+      delay: 1000,
+      easing: easing.default
+    });
+  });
 });
-},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js","lodash.debounce":"node_modules/lodash.debounce/index.js"}],"node_modules/simple-parallax-js/dist/simpleParallax.min.js":[function(require,module,exports) {
+},{"swiper":"node_modules/swiper/swiper.esm.js","swiper/swiper-bundle.min.css":"node_modules/swiper/swiper-bundle.min.css","animejs/lib/anime.es.js":"node_modules/animejs/lib/anime.es.js"}],"node_modules/simple-parallax-js/dist/simpleParallax.min.js":[function(require,module,exports) {
 var define;
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 

@@ -7,8 +7,10 @@ import Swiper, {
 } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import anime from "animejs/lib/anime.es.js";
-import debounce from "lodash.debounce";
-
+const easing = {
+  default: "easeOutCubic",
+  linear: "linear",
+};
 /*************************************************************
  * Hero slider
  *************************************************************/
@@ -39,14 +41,14 @@ const swiper = new Swiper(".hero-slider", {
 anime({
   targets: ".hero-slider-timer",
   scaleX: [0, 1],
-  easing: "linear",
+  easing: easing.linear,
   duration: speed,
 });
 swiper.on("slideChange", () => {
   anime({
     targets: ".hero-slider-timer",
     scaleX: [0, 1],
-    easing: "linear",
+    easing: easing.linear,
     duration: speed,
   });
 });
@@ -63,7 +65,7 @@ const moveNextCursor = (e) => {
     translateX: e.clientX,
     translateY: e.clientY,
     rotate: 180,
-    easing: "easeOutCubic",
+    easing: easing.default,
     duration: 50,
   });
 };
@@ -74,7 +76,7 @@ const movePrevCursor = (e) => {
     translateX: e.clientX,
     translateY: e.clientY,
     rotate: 0,
-    easing: "easeOutCubic",
+    easing: easing.default,
     duration: 50,
   });
 };
@@ -132,7 +134,7 @@ contentBoxSliders.forEach((slider) => {
   const prevEl = slider.querySelector(".swiper-button-prev");
   const nextEl = slider.querySelector(".swiper-button-next");
   initNavCursor(prevEl, nextEl);
-  new Swiper(slider, {
+  const contentBoxGallery = new Swiper(slider, {
     pagination: {
       el: slider.querySelector(".swiper-pagination"),
       type: "fraction",
@@ -142,10 +144,22 @@ contentBoxSliders.forEach((slider) => {
       prevEl,
     },
     speed: 1000,
+    spaceBetween: 10,
     breakpoints: {
       768: {
         allowTouchMove: false,
       },
     },
+  });
+
+  contentBoxGallery.on("slideChange", (swiper) => {
+    console.log(swiper.activeIndex, swiper.slides);
+    anime({
+      targets: swiper.slides[swiper.activeIndex].querySelector(".text"),
+      opacity: [0, 1],
+      duration: 500,
+      delay: 1000,
+      easing: easing.default,
+    });
   });
 });
