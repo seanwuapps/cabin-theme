@@ -3,6 +3,11 @@
 @import "./sliders/contentbox-gallery.scss";
 
 .cabin-slider {
+  position: relative;
+  .swiper-wrapper {
+    padding-bottom: 4rem;
+    align-items: center;
+  }
   .swiper-slide {
     overflow: hidden;
     transition: all 0.8s ease;

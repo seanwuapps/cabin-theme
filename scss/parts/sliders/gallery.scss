@@ -1,15 +1,16 @@
 .gallery-slider-container {
   margin-top: 6rem;
-  .gallery-slider {
-    position: relative;
-  }
-  .swiper-wrapper {
+  .swiper-wrapper.gallery-slider {
     align-items: center;
     padding-bottom: 4rem;
   }
   .swiper-slide {
     position: relative;
     aspect-ratio: 1;
+    transition: all 0.8s ease-out;
+    img {
+      transition: transform 1s ease-out;
+    }
     img {
       position: absolute;
       inset: 0;
@@ -54,7 +55,7 @@
         transform: scale(1.5);
       }
       @include tablet {
-        aspect-ratio: 3/4;
+        aspect-ratio: 1/1.1;
         width: 30% !important;
       }
     }

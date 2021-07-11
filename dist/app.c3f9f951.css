@@ -10879,7 +10879,7 @@ textarea.form-control-lg {
   --header-padding: 2rem;
   --logo-size: 5rem;
   --shadow-small: 0 0 0.25rem 0 rgba(0, 0, 0, 0.2);
-  --shadow-big: 0 0 1.25rem rgba(0, 0, 0, 0.4);
+  --shadow-big: 0 0 1.5rem 0.125rem rgba(0, 0, 0, 0.2);
   --header-bar-shadow: var(--shadow-small);
 }
 
@@ -11031,7 +11031,7 @@ section.feature .featured-parallax {
           backdrop-filter: blur(0.375rem);
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  box-shadow: var(--shadow-big);
+  box-shadow: var(--shadow-small);
 }
 
 .divider {
@@ -11067,7 +11067,7 @@ header .burger {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 9;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11125,7 +11125,7 @@ header .spacer {
 }
 header .logo {
   position: relative;
-  z-index: 9;
+  z-index: 99;
 }
 header .logo img {
   width: var(--logo-size);
@@ -11135,7 +11135,7 @@ header .nav-overlay {
   position: fixed;
   inset: 0;
   overflow-y: auto;
-  z-index: 7;
+  z-index: 99;
   background-color: var(--nav-overlay-bg-color);
   background-image: url(https://images.unsplash.com/photo-1568659585069-facb248c4935?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
   background-repeat: no-repeat;
@@ -11254,7 +11254,7 @@ header .header-bar-desktop {
     top: 2rem;
     right: calc(var(--menu-trigger-size) + 2rem);
     padding: 1rem 1.2rem;
-    z-index: 8;
+    z-index: 999;
     overflow: hidden;
   }
   header .header-bar-desktop::before {
@@ -11391,16 +11391,17 @@ header .header-bar-desktop {
 .gallery-slider-container {
   margin-top: 6rem;
 }
-.gallery-slider-container .gallery-slider {
-  position: relative;
-}
-.gallery-slider-container .swiper-wrapper {
+.gallery-slider-container .swiper-wrapper.gallery-slider {
   align-items: center;
   padding-bottom: 4rem;
 }
 .gallery-slider-container .swiper-slide {
   position: relative;
   aspect-ratio: 1;
+  transition: all 0.8s ease-out;
+}
+.gallery-slider-container .swiper-slide img {
+  transition: transform 1s ease-out;
 }
 .gallery-slider-container .swiper-slide img {
   position: absolute;
@@ -11445,7 +11446,7 @@ header .header-bar-desktop {
 }
 @media (min-width: 768px) {
   .gallery-slider-container .swiper-slide.swiper-slide-next {
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1.1;
     width: 30% !important;
   }
 }
@@ -11467,6 +11468,13 @@ header .header-bar-desktop {
   transform: scale(1);
 }
 
+.cabin-slider {
+  position: relative;
+}
+.cabin-slider .swiper-wrapper {
+  padding-bottom: 4rem;
+  align-items: center;
+}
 .cabin-slider .swiper-slide {
   overflow: hidden;
   transition: all 0.8s ease;
@@ -11507,13 +11515,16 @@ header .header-bar-desktop {
 .contentbox {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   position: relative;
+  padding-bottom: 4rem;
 }
 .contentbox img {
   flex: 1;
-  aspect-ratio: 1/1.2;
+  aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
+  max-width: 100%;
 }
 @media (min-width: 992px) {
   .contentbox img {
@@ -11522,27 +11533,56 @@ header .header-bar-desktop {
   }
 }
 .contentbox .text {
-  position: absolute;
   padding: 2rem;
   max-height: 100%;
   height: auto;
   background: white;
   box-shadow: var(--shadow-big);
-  width: 80%;
-  right: 2rem;
-  display: flex;
+  max-width: 80%;
+  margin: 0 auto;
+  display: inline-flex;
   flex-direction: column;
   flex: 1;
+  z-index: 9;
+  margin-top: -2rem;
 }
 @media (min-width: 992px) {
   .contentbox .text {
+    position: absolute;
     padding: 3rem;
     left: 50%;
-    width: 40%;
+    top: auto;
+    width: 35%;
   }
 }
 .contentbox .text h4, .contentbox .text .h4 {
   padding-bottom: 1rem;
+}
+.contentbox .text .text-content {
+  max-height: 12rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+.contentbox .text .link {
+  margin-top: 1rem;
+}
+.contentbox .text .link a {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #f7382d;
+}
+
+.contentbox-cta .contentbox {
+  margin: 8rem 0;
+}
+.contentbox-cta .contentbox:nth-child(even) img {
+  margin-left: auto;
+}
+.contentbox-cta .contentbox:nth-child(even) .text {
+  left: auto;
+  right: 50%;
 }
 /**
  * Swiper 6.7.5

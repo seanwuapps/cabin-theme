@@ -8,7 +8,7 @@
     <script src="./js/app.js" defer></script>
   </head>
   <body>
-    <!-- Nav: menu -->
+    <!-- #region Header -->
     <header>
       <!-- logo -->
       <div class="logo">
@@ -76,10 +76,8 @@
         </div>
       </div>
     </header>
-    <!-- End Header -->
-
-    <!-- Hero Slider: parallax -->
-    <!-- Slider main container -->
+    <!-- endregion Header -->
+    <!-- #region Hero Slider: parallax -->
     <section class="hero-slider-section">
       <div class="swiper-container hero-slider">
         <div class="swiper-wrapper">
@@ -129,8 +127,8 @@
       </div>
       <div class="scroll-indicator"></div>
     </section>
-    <!-- END Hero Slider: parallax -->
-    <!-- Gallery Slider: Experience (subheading heading description slider) -->
+    <!-- endregion Hero Slider: parallax -->
+    <!-- #region Gallery Slider: Experience (subheading heading description slider) -->
     <section class="xl" id="section-1">
       <!-- Heading + description -->
       <div class="container">
@@ -143,33 +141,46 @@
           nulla doloribus amet itaque eligendi!
         </p>
       </div>
+      <!-- END: Heading + description -->
       <!-- Gallery Slider -->
       <div class="gallery-slider-container">
         <div class="swiper-container cabin-slider gallery-slider">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/1/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/1/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/2/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/2/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/3/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/3/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/4/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/4/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/5/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/5/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
             <div class="swiper-slide">
-              <img src="https://picsum.photos/seed/6/800/600" />
-              <h3>Lorem ipsum</h3>
+              <div class="gallery-slide">
+                <img src="https://picsum.photos/seed/6/800/600" />
+                <h3>Lorem ipsum</h3>
+              </div>
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -179,7 +190,8 @@
         </div>
       </div>
     </section>
-    <!-- *Feature: parallax* -->
+    <!-- endregion -->
+    <!-- #region *Feature: parallax* -->
     <section class="feature">
       <img
         src="https://picsum.photos/seed/123/1200/800"
@@ -188,8 +200,8 @@
         data-rellax-percentage="0.5"
       />
     </section>
-    <!-- *END Feature: parallax* -->
-    <!-- Content box (heading img description) slider -->
+    <!-- endregion *Feature: parallax* -->
+    <!-- #region Content box (heading img description) slider -->
     <section class="xl" id="section-2">
       <!-- Gallery Slider -->
       <div class="contentbox-slider-container container">
@@ -268,8 +280,205 @@
         </div>
       </div>
     </section>
-    <!-- Rooms: Content box CTA with fullscreen modal  -->
-    <!-- Gallery Slider: Gallery -->
+    <!-- endregion Content box -->
+
+    <!-- #region Rooms: Content box CTA with fullscreen modal  -->
+    <section class="xl" id="section-3">
+      <!-- Heading + description -->
+      <div class="container">
+        <h4 class="subheading">Lorem ipsum dolor</h4>
+        <h2>Lorem, ipsum.</h2>
+        <p class="has-line line-before">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic
+          perspiciatis dicta corporis quis, a nostrum cum quo voluptatem,
+          sapiente suscipit quaerat excepturi ducimus accusantium praesentium
+          nulla doloribus amet itaque eligendi!
+        </p>
+      </div>
+      <div class="contentbox-cta container">
+        <!-- CTA 1 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/8/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CTA 2 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/88/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CTA 3 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/888/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- endregion -->
+
+    <!-- #region Gallery Slider: Gallery -->
+    <section class="xl" id="section-3">
+      <!-- Heading + description -->
+      <div class="container">
+        <h4 class="subheading">Lorem ipsum dolor</h4>
+        <h2>Lorem, ipsum.</h2>
+        <p class="has-line line-before">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic
+          perspiciatis dicta corporis quis, a nostrum cum quo voluptatem,
+          sapiente suscipit quaerat excepturi ducimus accusantium praesentium
+          nulla doloribus amet itaque eligendi!
+        </p>
+      </div>
+      <div class="contentbox-cta container">
+        <!-- CTA 1 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/8/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CTA 2 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/88/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CTA 3 -->
+        <div class="contentbox">
+          <img
+            src="https://picsum.photos/seed/888/1200/800"
+            alt="parallax image"
+          />
+          <div class="text">
+            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
+            <div class="divider"></div>
+            <div class="text-content">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
+                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
+                dolor sit amet consectetur adipisicing elit
+              </p>
+            </div>
+            <div class="link">
+              <a
+                href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Reserve now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- endregion -->
 
     <!-- *Feature: parallax* -->
     <!-- Culture: *sticky title* content box  -->

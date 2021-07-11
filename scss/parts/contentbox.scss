@@ -1,37 +1,71 @@
 .contentbox {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   position: relative;
+  padding-bottom: 4rem;
   img {
     flex: 1;
-    aspect-ratio: 1/1.2;
+    aspect-ratio: 1/1;
     object-fit: cover;
+    max-width: 100%;
     @include desktop {
       max-width: 70%;
       min-width: 70%;
     }
   }
   .text {
-    position: absolute;
     padding: 2rem;
     max-height: 100%;
     height: auto;
     background: white;
     box-shadow: var(--shadow-big);
-    width: 80%;
-    right: 2rem;
-    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+    display: inline-flex;
     flex-direction: column;
     flex: 1;
+    z-index: 9;
+    margin-top: -2rem;
     @include desktop {
+      position: absolute;
       padding: 3rem;
       left: 50%;
-      width: 40%;
+      top: auto;
+      width: 35%;
     }
     h4 {
       padding-bottom: 1rem;
     }
     .text-content {
+      max-height: 12rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 8;
+      -webkit-box-orient: vertical;
+    }
+    .link {
+      margin-top: 1rem;
+      a {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $primary;
+      }
+    }
+  }
+}
+
+.contentbox-cta {
+  .contentbox {
+    margin: 8rem 0;
+    &:nth-child(even) {
+      img {
+        margin-left: auto;
+      }
+      .text {
+        left: auto;
+        right: 50%;
+      }
     }
   }
 }

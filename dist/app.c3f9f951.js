@@ -15237,7 +15237,7 @@ new _simpleParallaxJs.default(document.querySelectorAll(".hero-slide-img"), {
   transition: "none"
 });
 new _simpleParallaxJs.default(document.querySelectorAll(".featured-parallax"), {
-  scale: 1.5
+  scale: 2
 });
 new _simpleParallaxJs.default(document.querySelectorAll(".contentbox .text"), {
   scale: 1.5,
@@ -15370,7 +15370,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "29421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11221" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

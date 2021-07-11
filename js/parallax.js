@@ -7,7 +7,7 @@ new simpleParallax(document.querySelectorAll(".hero-slide-img"), {
   transition: "none",
 });
 new simpleParallax(document.querySelectorAll(".featured-parallax"), {
-  scale: 1.5,
+  scale: 2,
 });
 
 new simpleParallax(document.querySelectorAll(".contentbox .text"), {
