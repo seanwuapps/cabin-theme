@@ -163,3 +163,27 @@ contentBoxSliders.forEach((slider) => {
     });
   });
 });
+
+const imageSliders = document.querySelectorAll(".single-image-slider");
+imageSliders.forEach((slider) => {
+  const prevEl = slider.querySelector(".swiper-button-prev");
+  const nextEl = slider.querySelector(".swiper-button-next");
+  initNavCursor(prevEl, nextEl);
+  new Swiper(slider, {
+    pagination: {
+      el: slider.querySelector(".swiper-pagination"),
+      type: "fraction",
+    },
+    navigation: {
+      nextEl,
+      prevEl,
+    },
+    speed: 1000,
+    spaceBetween: 40,
+    breakpoints: {
+      768: {
+        allowTouchMove: false,
+      },
+    },
+  });
+});

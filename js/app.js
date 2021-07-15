@@ -7,3 +7,4 @@ import "./slider";
 import "./parallax";
 import "./menu";
 import "./scroll";
+import "./sticky";

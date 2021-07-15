@@ -1,3 +1,13 @@
+@mixin secondaryContentbox() {
+  img {
+    margin-left: auto;
+  }
+  .text {
+    left: auto;
+    right: 40%;
+  }
+}
+
 .contentbox {
   display: flex;
   align-items: center;
@@ -26,13 +36,14 @@
     flex-direction: column;
     flex: 1;
     z-index: 9;
-    margin-top: -2rem;
+    margin-top: -4rem;
     @include desktop {
       position: absolute;
       padding: 3rem;
-      left: 50%;
+      left: 35%;
       top: auto;
-      width: 35%;
+      width: 40%;
+      margin-top: 0;
     }
     h4 {
       padding-bottom: 1rem;
@@ -58,14 +69,18 @@
 .contentbox-cta {
   .contentbox {
     margin: 8rem 0;
-    &:nth-child(even) {
-      img {
-        margin-left: auto;
+  }
+
+  &.alternating {
+    .contentbox {
+      &:nth-child(even) {
+        @include secondaryContentbox();
       }
-      .text {
-        left: auto;
-        right: 50%;
-      }
+    }
+  }
+  &.secondary {
+    .contentbox {
+      @include secondaryContentbox();
     }
   }
 }

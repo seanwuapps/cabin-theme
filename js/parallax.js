@@ -11,7 +11,7 @@ new simpleParallax(document.querySelectorAll(".featured-parallax"), {
 });
 
 new simpleParallax(document.querySelectorAll(".contentbox .text"), {
-  scale: 1.5,
+  scale: 1.75,
   overflow: true,
   transition: "none",
 });

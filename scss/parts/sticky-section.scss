@@ -1,0 +1,32 @@
+section.sticky {
+  position: relative;
+  overflow: unset;
+  .sticky-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 2%;
+  }
+  .sticky-header {
+    display: none;
+    @include tablet {
+      margin-top: 8rem;
+      position: sticky;
+      top: 80px;
+      bottom: 120px;
+      display: block;
+      width: 35%;
+      flex-grow: 0;
+      .subheading {
+        font-size: 12px;
+      }
+      h2 {
+        font-size: 32px;
+      }
+    }
+  }
+  .sticky-content {
+    @include tablet {
+      flex: 1;
+    }
+  }
+}
