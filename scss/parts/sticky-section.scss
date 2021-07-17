@@ -25,6 +25,20 @@ section.sticky {
     }
   }
   .sticky-content {
+    .contentbox {
+      h4 {
+        padding-bottom: 0;
+      }
+      .divider {
+        margin: 1rem 0;
+      }
+      .text {
+        @include tablet {
+          right: 25%;
+          width: 70%;
+        }
+      }
+    }
     @include tablet {
       flex: 1;
     }
