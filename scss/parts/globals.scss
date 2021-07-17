@@ -74,9 +74,13 @@ section.feature {
 
 a {
   color: currentColor;
-  @include transition(color);
   &:hover {
     color: darken($primary, 20%);
+  }
+  &.icon-link {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 10px;
   }
 }
 

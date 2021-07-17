@@ -11048,11 +11048,14 @@ section.feature .featured-parallax {
 
 a {
   color: currentColor;
-  will-change: color;
-  transition: color 0.4s ease-in-out;
 }
 a:hover {
   color: #b71107;
+}
+a.icon-link {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.625rem;
 }
 
 .footer {
