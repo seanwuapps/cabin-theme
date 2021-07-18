@@ -1,7 +1,8 @@
 {
 	"scripts": {
+		"cp": "rename \"dist/app.*.js\" \"dist/app.js\"",
 		"start": "parcel serve index.html --port 8000",
-		"build": "parcel build index.html"
+		"build": "parcel build --no-minify index.html"
 	},
 	"dependencies": {
 		"animejs": "^3.2.1",
@@ -18,6 +19,7 @@
 		"@types/swiper": "^5.4.3",
 		"autoprefixer": "^9.8.6",
 		"babel-loader": "^8.2.2",
+		"cpx": "^1.5.0",
 		"cssnano": "^4.1.11",
 		"parcel-bundler": "^1.12.5",
 		"postcss": "^8.3.5",
