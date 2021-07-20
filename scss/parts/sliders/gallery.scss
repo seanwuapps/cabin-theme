@@ -9,6 +9,9 @@
     position: relative;
     aspect-ratio: 1;
     transition: all 0.8s ease-out;
+    &:last-child {
+      visibility: hidden;
+    }
     img {
       transition: transform 1s ease-out;
       position: absolute;
@@ -24,6 +27,7 @@
       position: absolute;
       bottom: 2vw;
       left: 2vw;
+      right: 2vw;
       color: white;
       font-size: 2rem;
       z-index: 2;

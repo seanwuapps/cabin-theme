@@ -83,9 +83,15 @@ header {
   .logo {
     position: relative;
     z-index: 99;
+    a {
+      display: block;
+      background: none;
+      padding: 0;
+    }
     img {
-      width: var(--logo-size);
+      width: auto;
       height: var(--logo-size);
+      object-fit: contain;
     }
   }
   .nav-overlay {
@@ -110,7 +116,8 @@ header {
       background-color: rgba($dark, 0.8);
       @include desktop {
         display: flex;
-        place-items: center;
+        align-items: center;
+        justify-content: center;
         padding-top: 2rem;
       }
     }

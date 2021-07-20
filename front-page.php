@@ -1,263 +1,15 @@
 <?php get_header() ?>
-    <!-- #region Hero Slider: parallax -->
-    <section class="hero-slider-section">
-      <div class="swiper-container hero-slider">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img class="hero-slide-img" src="https://picsum.photos/seed/1/800/600">
-            <div class="hero-slide-content">
-              <h3>Lorem ipsum dolor sit</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Incidunt voluptas, dolorem unde ipsum sunt quo iure officia!
-                Inventore quibusdam laborum eius repellat, laudantium, eligendi
-              </p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img class="hero-slide-img" src="https://picsum.photos/seed/2/800/600">
-            <div class="hero-slide-content">
-              <h3>Lorem ipsum dolor sit</h3>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img class="hero-slide-img" src="https://picsum.photos/seed/3/800/600">
-            <div class="hero-slide-content">
-              <h3>Lorem ipsum dolor sit</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Incidunt voluptas, dolorem unde ipsum sunt quo iure officia!
-                Inventore quibusdam laborum eius repellat, laudantium, eligendi
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
+<?php 
+the_content();
+/*
+<?php get_template_part( 'templates/hero-slider' ) ?>
+<?php get_template_part('templates/experience-slider') ?>
 
-        <div class="hero-slider-timer"></div>
-        <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
-      </div>
-      <div class="scroll-indicator"></div>
-    </section>
-    <!-- endregion Hero Slider: parallax -->
-    <!-- #region Gallery Slider: Experience (subheading heading description slider) -->
-    <section class="xl" id="section-1">
-      <!-- Heading + description -->
-      <div class="container">
-        <h4 class="subheading">Lorem ipsum dolor</h4>
-        <h2>Lorem, ipsum.</h2>
-        <p class="has-line line-before">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic
-          perspiciatis dicta corporis quis, a nostrum cum quo voluptatem,
-          sapiente suscipit quaerat excepturi ducimus accusantium praesentium
-          nulla doloribus amet itaque eligendi!
-        </p>
-      </div>
-      <!-- END: Heading + description -->
-      <!-- Gallery Slider -->
-      <div class="container gallery-slider-container">
-        <div class="swiper-container cabin-slider gallery-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/1/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/2/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/3/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/4/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/5/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="gallery-slide">
-                <img src="https://picsum.photos/seed/6/800/600">
-                <h3>Lorem ipsum</h3>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
 
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
-    </section>
-    <!-- endregion -->
-    <!-- #region *Feature: parallax* -->
-    <section class="feature">
-      <img src="https://picsum.photos/seed/123/1200/800" alt="parallax image" class="featured-parallax" data-rellax-percentage="0.5">
-    </section>
-    <!-- endregion *Feature: parallax* -->
-    <!-- #region Content box (heading img description) slider -->
-    <section class="xl" id="section-2">
-      <!-- Gallery Slider -->
-      <div class="contentbox-slider-container container">
-        <div class="swiper-container cabin-slider contentbox-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="contentbox">
-                <img src="https://picsum.photos/seed/8/1200/800" alt="parallax image">
-                <div class="text">
-                  <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-                  <div class="divider"></div>
-                  <div class="text-content">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="contentbox">
-                <img src="https://picsum.photos/seed/9/1200/800" alt="parallax image">
-                <div class="text">
-                  <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-                  <div class="divider"></div>
-                  <div class="text-content">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="contentbox">
-                <img src="https://picsum.photos/seed/7/1200/800" alt="parallax image">
-                <div class="text">
-                  <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-                  <div class="divider"></div>
-                  <div class="text-content">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                      orem ipsum dolor sit amet consectetur adipisicing elit
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
+<?php get_template_part('templates/contentbox-slider') ?>
+<?php get_template_part('templates/cta') ?>
 
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
-    </section>
-    <!-- endregion Content box -->
-    <!-- #region Rooms: Content box CTA -->
-    <section class="xl" id="section-3">
-      <!-- Heading + description -->
-      <div class="container">
-        <h4 class="subheading">Lorem ipsum dolor</h4>
-        <h2>Lorem, ipsum.</h2>
-        <p class="has-line line-before">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic
-          perspiciatis dicta corporis quis, a nostrum cum quo voluptatem,
-          sapiente suscipit quaerat excepturi ducimus accusantium praesentium
-          nulla doloribus amet itaque eligendi!
-        </p>
-      </div>
-      <div class="contentbox-cta alternating">
-        <!-- CTA 1 -->
-        <div class="contentbox">
-          <img src="https://picsum.photos/seed/8/1200/800" alt="parallax image">
-          <div class="text">
-            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-            <div class="divider"></div>
-            <div class="text-content">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
-                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
-                dolor sit amet consectetur adipisicing elit
-              </p>
-            </div>
-            <div class="link">
-              <a href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr" target="_blank" rel="noreferrer">
-                Reserve now
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- CTA 2 -->
-        <div class="contentbox">
-          <img src="https://picsum.photos/seed/88/1200/800" alt="parallax image">
-          <div class="text">
-            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-            <div class="divider"></div>
-            <div class="text-content">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
-                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
-                dolor sit amet consectetur adipisicing elit
-              </p>
-            </div>
-            <div class="link">
-              <a href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr" target="_blank" rel="noreferrer">
-                Reserve now
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- CTA 3 -->
-        <div class="contentbox">
-          <img src="https://picsum.photos/seed/888/1200/800" alt="parallax image">
-          <div class="text">
-            <h4>Lorem ipsum dolor Lorem ipsum dolor</h4>
-            <div class="divider"></div>
-            <div class="text-content">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit orem
-                ipsum dolor sit amet consectetur adipisicing elit orem ipsum
-                dolor sit amet consectetur adipisicing elit
-              </p>
-            </div>
-            <div class="link">
-              <a href="https://www.marriott.com/reservation/availability.mi?isSearch=false&propertyCode=vcexr" target="_blank" rel="noreferrer">
-                Reserve now
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- endregion -->
-
+*/ ?>
     <!-- tabs? -->
 
     <!-- #region Gallery Slider: Gallery -->
@@ -298,11 +50,12 @@
       </div>
     </section>
     <!-- endregion -->
-    <!-- #region Feature: parallax -->
-    <section class="feature">
-      <img src="https://picsum.photos/seed/654/1200/800" alt="parallax image" class="featured-parallax" data-rellax-percentage="0.5">
-    </section>
-    <!-- endregion -->
+
+<!-- #region *Feature: parallax* -->
+<section class="feature">
+  <img src="<?php echo get_field('parallax_image_2'); ?>" alt="parallax image" class="featured-parallax" data-rellax-percentage="0.5">
+</section>
+  <!-- endregion *Feature: parallax* -->
 
     <!-- #region Culture: *sticky title* content box  -->
     <section class="xl sticky" id="section-5">
@@ -397,8 +150,12 @@
           </a>
         </h5>
         <!-- END: Heading + description -->
-        <div>[instagram_shortcode]</div>
+        <div>
+          <?php
+            echo do_shortcode('[instagram-feed]');
+          ?>
+        </div>
       </div>
     </section>
     <!-- endregion -->
-<?php get_sidebar(); ?>
+<?php get_footer(); ?>

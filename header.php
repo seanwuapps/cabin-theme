@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php wp_title(); ?> - <?php bloginfo( 'name' ); ?></title>
-    <?php wp_head(); ?>
-    <script src="/app.cc2f5051.js" defer=""></script>
-  <link rel="stylesheet" href="/app.a7646f36.css"></head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php 
+    wp_head();
+    ?>
+    <title><?php bloginfo( 'name' ); ?></title>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(). '/dist/css/app.css' ?>">
+  </head>
   <body <?php body_class(); ?>>
     <!-- #region Header -->
     <header>
       <!-- logo -->
       <div class="logo">
-        <img src="/logo.aa5838b1.svg">
+      <?php
+      if ( function_exists( 'the_custom_logo' ) ) {
+        the_custom_logo();
+      }
+      ?>
       </div>
       <!-- menu trigger -->
       <div class="burger menu-trigger">
@@ -49,14 +55,9 @@
             </div>
           </div>
           <nav class="main-nav">
-            <ul>
-              <li><a href="#section-1">Lorem</a></li>
-              <li><a href="#section-2">Ratione</a></li>
-              <li><a href="#section-3">Minus</a></li>
-              <li><a href="#section-4">Facilis</a></li>
-              <li><a href="#section-5">Facilis</a></li>
-              <li><a href="#section-6">Facilis</a></li>
-            </ul>
+            <?php
+            wp_nav_menu( array( 'theme_location' => 'main-menu' ) );
+            ?>
           </nav>
         </div>
       </div>
